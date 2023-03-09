@@ -1,4 +1,7 @@
+import { Link } from 'react-router-dom';
 import FilmCard from '../../components/film-card/film-card';
+import Logo from '../../components/logo/logo';
+import LogoLight from '../../components/logo/logo-light';
 
 type MainPageProps = {
   title: string;
@@ -21,11 +24,7 @@ function MainPage({ title, genre, year }: MainPageProps): JSX.Element {
 
         <header className='page-header film-card__head'>
           <div className='logo'>
-            <a href='/#' className='logo__link'>
-              <span className='logo__letter logo__letter--1'>W</span>
-              <span className='logo__letter logo__letter--2'>T</span>
-              <span className='logo__letter logo__letter--3'>W</span>
-            </a>
+            <Logo />
           </div>
 
           <ul className='user-block'>
@@ -40,7 +39,7 @@ function MainPage({ title, genre, year }: MainPageProps): JSX.Element {
               </div>
             </li>
             <li className='user-block__item'>
-              <a href='/#' className='user-block__link'>Sign out</a>
+              <Link to='/#' className='user-block__link'>Sign out</Link>
             </li>
           </ul>
         </header>
@@ -95,54 +94,54 @@ function MainPage({ title, genre, year }: MainPageProps): JSX.Element {
 
           <ul className='catalog__genres-list'>
             <li className='catalog__genres-item catalog__genres-item--active'>
-              <a href='/#' className='catalog__genres-link'>
+              <Link to='/#' className='catalog__genres-link'>
                 All genres
-              </a>
+              </Link>
             </li>
             <li className='catalog__genres-item'>
-              <a href='/#' className='catalog__genres-link'>
+              <Link to='/#' className='catalog__genres-link'>
                 Comedies
-              </a>
+              </Link>
             </li>
             <li className='catalog__genres-item'>
-              <a href='/#' className='catalog__genres-link'>
+              <Link to='/#' className='catalog__genres-link'>
                 Crime
-              </a>
+              </Link>
             </li>
             <li className='catalog__genres-item'>
-              <a href='/#' className='catalog__genres-link'>
+              <Link to='/#' className='catalog__genres-link'>
                 Documentary
-              </a>
+              </Link>
             </li>
             <li className='catalog__genres-item'>
-              <a href='/#' className='catalog__genres-link'>
+              <Link to='/#' className='catalog__genres-link'>
                 Dramas
-              </a>
+              </Link>
             </li>
             <li className='catalog__genres-item'>
-              <a href='/#' className='catalog__genres-link'>
+              <Link to='/#' className='catalog__genres-link'>
                 Horror
-              </a>
+              </Link>
             </li>
             <li className='catalog__genres-item'>
-              <a href='/#' className='catalog__genres-link'>
+              <Link to='/#' className='catalog__genres-link'>
                 Kids & Family
-              </a>
+              </Link>
             </li>
             <li className='catalog__genres-item'>
-              <a href='/#' className='catalog__genres-link'>
+              <Link to='/#' className='catalog__genres-link'>
                 Romance
-              </a>
+              </Link>
             </li>
             <li className='catalog__genres-item'>
-              <a href='/#' className='catalog__genres-link'>
+              <Link to='/#' className='catalog__genres-link'>
                 Sci-Fi
-              </a>
+              </Link>
             </li>
             <li className='catalog__genres-item'>
-              <a href='/#' className='catalog__genres-link'>
+              <Link to='/#' className='catalog__genres-link'>
                 Thrillers
-              </a>
+              </Link>
             </li>
           </ul>
 
@@ -178,11 +177,7 @@ function MainPage({ title, genre, year }: MainPageProps): JSX.Element {
 
         <footer className='page-footer'>
           <div className='logo'>
-            <a href='/#' className='logo__link logo__link--light'>
-              <span className='logo__letter logo__letter--1'>W</span>
-              <span className='logo__letter logo__letter--2'>T</span>
-              <span className='logo__letter logo__letter--3'>W</span>
-            </a>
+            <LogoLight />
           </div>
 
           <div className='copyright'>
