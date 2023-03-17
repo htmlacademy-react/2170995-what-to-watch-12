@@ -1,15 +1,29 @@
-import Logo from '../../components/logo/logo';
-import LogoLight from '../../components/logo/logo-light';
+import { Link, useParams } from 'react-router-dom';
 
-function MoviePage(): JSX.Element {
+import Logo from '../../components/logo/logo';
+import Footer from '../../components/footer/footer';
+import UserBlock from '../../components/user-block/user-block';
+
+
+import { AppRoute } from '../../const';
+import { TypeFilms } from '../../types/type-film';
+
+type MoviePageProps = {
+  films: TypeFilms;
+}
+
+function MoviePage({ films }: MoviePageProps): JSX.Element {
+  const params = useParams();
+  const filmInPage = films.find((film) => film.id === Number(params.id));
+
   return (
     <>
       <section className='film-card film-card--full'>
         <div className='film-card__hero'>
           <div className='film-card__bg'>
             <img
-              src='img/bg-the-grand-budapest-hotel.jpg'
-              alt='The Grand Budapest Hotel'
+              src={filmInPage?.backgroundImage}
+              alt={filmInPage?.name}
             />
           </div>
 
@@ -19,30 +33,15 @@ function MoviePage(): JSX.Element {
             <div className='logo'>
               <Logo />
             </div>
-
-            <ul className='user-block'>
-              <li className='user-block__item'>
-                <div className='user-block__avatar'>
-                  <img
-                    src='img/avatar.jpg'
-                    alt='User avatar'
-                    width='63'
-                    height='63'
-                  />
-                </div>
-              </li>
-              <li className='user-block__item'>
-                <a href='/#' className='user-block__link'>Sign out</a>
-              </li>
-            </ul>
+            <UserBlock />
           </header>
 
           <div className='film-card__wrap'>
             <div className='film-card__desc'>
-              <h2 className='film-card__title'>The Grand Budapest Hotel</h2>
+              <h2 className='film-card__title'>{filmInPage?.name}</h2>
               <p className='film-card__meta'>
-                <span className='film-card__genre'>Drama</span>
-                <span className='film-card__year'>2014</span>
+                <span className='film-card__genre'>{filmInPage?.genre}</span>
+                <span className='film-card__year'>{filmInPage?.released}</span>
               </p>
 
               <div className='film-card__buttons'>
@@ -63,11 +62,11 @@ function MoviePage(): JSX.Element {
                     <use xlinkHref='#add'></use>
                   </svg>
                   <span>My list</span>
-                  <span className='film-card__count'>9</span>
+                  <span className='film-card__count'>{films.length}</span>
                 </button>
-                <a href='add-review.html' className='btn film-card__button'>
+                <Link to={AppRoute.AddReview} className='btn film-card__button'>
                   Add review
-                </a>
+                </Link>
               </div>
             </div>
           </div>
@@ -77,8 +76,8 @@ function MoviePage(): JSX.Element {
           <div className='film-card__info'>
             <div className='film-card__poster film-card__poster--big'>
               <img
-                src='img/the-grand-budapest-hotel-poster.jpg'
-                alt='The Grand Budapest Hotel poster'
+                src={filmInPage?.posterImage}
+                alt={filmInPage?.name}
                 width='218'
                 height='327'
               />
@@ -106,7 +105,7 @@ function MoviePage(): JSX.Element {
               </nav>
 
               <div className='film-rating'>
-                <div className='film-rating__score'>8,9</div>
+                <div className='film-rating__score'>{filmInPage?.rating}</div>
                 <p className='film-rating__meta'>
                   <span className='film-rating__level'>Very good</span>
                   <span className='film-rating__count'>240 ratings</span>
@@ -114,18 +113,15 @@ function MoviePage(): JSX.Element {
               </div>
 
               <div className='film-card__text'>
-                <p>In the 1930s, the Grand Budapest Hotel is a popular European ski resort, presided over by concierge Gustave H. (Ralph Fiennes). Zero, a junior lobby boy, becomes Gustave&apos;s friend and protege.</p>
-
-                <p>Gustave prides himself on providing first-class service to the hotel&apos;s guests, including satisfying the sexual needs of the many elderly women who stay there. When one of Gustave&apos;s lovers dies mysteriously, Gustave finds himself the recipient of a priceless painting and the chief suspect in her murder.</p>
+                <p>{filmInPage?.description}</p>
 
                 <p className='film-card__director'>
-                  <strong>Director: Wes Anderson</strong>
+                  <strong>Director: {filmInPage?.director}</strong>
                 </p>
 
                 <p className='film-card__starring'>
                   <strong>
-                    Starring: Bill Murray, Edward Norton, Jude Law, Willem Dafoe
-                    and other
+                    Starring: {filmInPage?.starring.join(', ')}
                   </strong>
                 </p>
               </div>
@@ -204,16 +200,7 @@ function MoviePage(): JSX.Element {
             </article>
           </div>
         </section>
-
-        <footer className='page-footer'>
-          <div className='logo'>
-            <LogoLight />
-          </div>
-
-          <div className='copyright'>
-            <p>© 2019 What to watch Ltd.</p>
-          </div>
-        </footer>
+        <Footer />
       </div>
     </>
   );

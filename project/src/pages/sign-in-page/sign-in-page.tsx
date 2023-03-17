@@ -1,5 +1,5 @@
 import Logo from '../../components/logo/logo';
-import LogoLight from '../../components/logo/logo-light';
+import Footer from '../../components/footer/footer';
 
 function SignInPage(): JSX.Element {
   return (
@@ -54,15 +54,7 @@ function SignInPage(): JSX.Element {
         </form>
       </div>
 
-      <footer className='page-footer'>
-        <div className='logo'>
-          <LogoLight />
-        </div>
-
-        <div className='copyright'>
-          <p>© 2019 What to watch Ltd.</p>
-        </div>
-      </footer>
+      <Footer />
     </div>
   );
 }
