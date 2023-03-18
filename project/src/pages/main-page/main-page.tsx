@@ -1,15 +1,20 @@
 import { Link } from 'react-router-dom';
-import FilmCard from '../../components/film-card/film-card';
+
+import FilmList from '../../components/film-list/film-list';
 import Logo from '../../components/logo/logo';
-import LogoLight from '../../components/logo/logo-light';
+import Footer from '../../components/footer/footer';
+import UserBlock from '../../components/user-block/user-block';
 
-type MainPageProps = {
-  title: string;
-  genre: string;
-  year: number;
-};
+import { TypeFilms } from '../../types/type-film';
+import { TypeMainPage } from '../../types/type-main-page';
 
-function MainPage({ title, genre, year }: MainPageProps): JSX.Element {
+type MainPagaProps = {
+  title: TypeMainPage;
+  films: TypeFilms;
+}
+
+
+function MainPage({ title, films }: MainPagaProps): JSX.Element {
   return (
     <>
       <section className='film-card'>
@@ -26,22 +31,7 @@ function MainPage({ title, genre, year }: MainPageProps): JSX.Element {
           <div className='logo'>
             <Logo />
           </div>
-
-          <ul className='user-block'>
-            <li className='user-block__item'>
-              <div className='user-block__avatar'>
-                <img
-                  src='img/avatar.jpg'
-                  alt='User avatar'
-                  width='63'
-                  height='63'
-                />
-              </div>
-            </li>
-            <li className='user-block__item'>
-              <Link to='/#' className='user-block__link'>Sign out</Link>
-            </li>
-          </ul>
+          <UserBlock />
         </header>
 
         <div className='film-card__wrap'>
@@ -56,10 +46,10 @@ function MainPage({ title, genre, year }: MainPageProps): JSX.Element {
             </div>
 
             <div className='film-card__desc'>
-              <h2 className='film-card__title'>{title}</h2>
+              <h2 className='film-card__title'>{title.title}</h2>
               <p className='film-card__meta'>
-                <span className='film-card__genre'>{genre}</span>
-                <span className='film-card__year'>{year}</span>
+                <span className='film-card__genre'>{title.genre}</span>
+                <span className='film-card__year'>{title.year}</span>
               </p>
 
               <div className='film-card__buttons'>
@@ -80,7 +70,7 @@ function MainPage({ title, genre, year }: MainPageProps): JSX.Element {
                     <use xlinkHref='#add'></use>
                   </svg>
                   <span>My list</span>
-                  <span className='film-card__count'>9</span>
+                  <span className='film-card__count'>{films.length}</span>
                 </button>
               </div>
             </div>
@@ -146,26 +136,7 @@ function MainPage({ title, genre, year }: MainPageProps): JSX.Element {
           </ul>
 
           <div className='catalog__films-list'>
-            <FilmCard />
-            <FilmCard />
-            <FilmCard />
-            <FilmCard />
-            <FilmCard />
-            <FilmCard />
-            <FilmCard />
-            <FilmCard />
-            <FilmCard />
-            <FilmCard />
-            <FilmCard />
-            <FilmCard />
-            <FilmCard />
-            <FilmCard />
-            <FilmCard />
-            <FilmCard />
-            <FilmCard />
-            <FilmCard />
-            <FilmCard />
-            <FilmCard />
+            <FilmList films={films} />
           </div>
 
           <div className='catalog__more'>
@@ -175,15 +146,7 @@ function MainPage({ title, genre, year }: MainPageProps): JSX.Element {
           </div>
         </section>
 
-        <footer className='page-footer'>
-          <div className='logo'>
-            <LogoLight />
-          </div>
-
-          <div className='copyright'>
-            <p>© 2019 What to watch Ltd.</p>
-          </div>
-        </footer>
+        <Footer />
       </div>
     </>
   );
