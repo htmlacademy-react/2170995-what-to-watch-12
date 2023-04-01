@@ -1,13 +1,17 @@
-import Logo from '../../components/logo/logo';
-import Footer from '../../components/footer/footer';
+import { Helmet } from 'react-helmet-async';
 
-function SignInPage(): JSX.Element {
+// components
+import MainLogo from '../../components/logo/Main-logo';
+import Footer from '../../components/Footer';
+
+export default function SignInPage(): JSX.Element {
   return (
     <div className='user-page'>
+      <Helmet>
+        <title>WTW Sing in page</title>
+      </Helmet>
       <header className='page-header user-page__head'>
-        <div className='logo'>
-          <Logo />
-        </div>
+        <MainLogo />
 
         <h1 className='page-title user-page__title'>Sign in</h1>
       </header>
@@ -58,5 +62,3 @@ function SignInPage(): JSX.Element {
     </div>
   );
 }
-
-export default SignInPage;
