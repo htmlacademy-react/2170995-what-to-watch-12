@@ -1,7 +1,7 @@
 import { Helmet } from 'react-helmet-async';
 
 // types
-import { FilmMockTypes } from '../../types/filmsMockType';
+import { FilmMockTypes } from '../../types/films-mock-type';
 
 type PlayerPageProps = {
   films: FilmMockTypes;

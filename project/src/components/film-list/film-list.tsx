@@ -1,8 +1,8 @@
 // components
-import FilmCard from './FilmCard';
+import FilmCard from '../film-card/film-card';
 
 // types
-import { FilmMockTypes } from '../types/filmsMockType';
+import { FilmMockTypes } from '../../types/films-mock-type';
 
 type FilmListProps = {
   films: FilmMockTypes;

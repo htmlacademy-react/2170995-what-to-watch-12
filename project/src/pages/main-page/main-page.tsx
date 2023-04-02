@@ -1,12 +1,12 @@
 // components
-import FilmList from '../../components/FilmList';
-import MainLogo from '../../components/logo/Main-logo';
-import UserBlock from '../../components/UserBlock';
-import Footer from '../../components/Footer';
+import FilmList from '../../components/film-list/film-list';
+import MainLogo from '../../components/logo/main-logo';
+import UserBlock from '../../components/user-block/user-block';
+import Footer from '../../components/footer/footer';
 
 // types
-import { FilmCardDescription } from '../../types/filmCardDescription';
-import { FilmMockTypes } from '../../types/filmsMockType';
+import { FilmCardDescription } from '../../types/film-card-description';
+import { FilmMockTypes } from '../../types/films-mock-type';
 
 type MainPageProps = {
   filmCardDescription: FilmCardDescription;

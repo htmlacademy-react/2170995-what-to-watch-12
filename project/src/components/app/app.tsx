@@ -9,11 +9,11 @@ import MyListPage from '../../pages/my-list-page/my-list-page';
 import NotFoundPage from '../../pages/not-found-page/not-found-page';
 import PlayerPage from '../../pages/player-page/player-page';
 import SignInPage from '../../pages/sign-in-page/sign-in-page';
-import PrivateRoute from '../Private-route';
+import PrivateRoute from '../private-route/private-route';
 
 // types
-import { FilmCardDescription } from '../../types/filmCardDescription';
-import { FilmMockTypes } from '../../types/filmsMockType';
+import { FilmCardDescription } from '../../types/film-card-description';
+import { FilmMockTypes } from '../../types/films-mock-type';
 
 // const
 import { AppRoute, AuthorizationStatus } from '../../const';

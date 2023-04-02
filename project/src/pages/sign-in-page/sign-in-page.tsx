@@ -1,8 +1,8 @@
 import { Helmet } from 'react-helmet-async';
 
 // components
-import MainLogo from '../../components/logo/Main-logo';
-import Footer from '../../components/Footer';
+import MainLogo from '../../components/logo/main-logo';
+import Footer from '../../components/footer/footer';
 
 export default function SignInPage(): JSX.Element {
   return (

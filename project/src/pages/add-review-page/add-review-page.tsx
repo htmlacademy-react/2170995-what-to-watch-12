@@ -2,12 +2,12 @@ import { Helmet } from 'react-helmet-async';
 import { Link, useParams } from 'react-router-dom';
 
 // components
-import UserBlock from '../../components/UserBlock';
-import MainLogo from '../../components/logo/Main-logo';
-import CommentForm from '../../components/CommentForm';
+import UserBlock from '../../components/user-block/user-block';
+import MainLogo from '../../components/logo/main-logo';
+import CommentForm from '../../components/comment-form/comment-form';
 
 // types
-import { FilmMockTypes } from '../../types/filmsMockType';
+import { FilmMockTypes } from '../../types/films-mock-type';
 
 type AddReviewPageProps = {
   films: FilmMockTypes;

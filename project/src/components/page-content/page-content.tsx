@@ -1,4 +1,4 @@
-import Footer from './Footer';
+import Footer from '../footer/footer';
 
 export default function PageContent(): JSX.Element {
   return (

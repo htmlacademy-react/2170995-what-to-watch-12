@@ -2,9 +2,9 @@ import { Link } from 'react-router-dom';
 import { Helmet } from 'react-helmet-async';
 
 // components
-import UserBlock from '../../components/UserBlock';
-import MainLogo from '../../components/logo/Main-logo';
-import Footer from '../../components/Footer';
+import UserBlock from '../../components/user-block/user-block';
+import MainLogo from '../../components/logo/main-logo';
+import Footer from '../../components/footer/footer';
 
 // styles
 import styles from './not-found-page.module.css';

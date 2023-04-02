@@ -1,7 +1,7 @@
 import { useEffect, useRef, useState } from 'react';
 
 // const
-import { PLAYING_DELAY } from '../const';
+import { PLAYING_DELAY } from '../../const';
 
 type VideoPlayerProps = {
   isActive: boolean;

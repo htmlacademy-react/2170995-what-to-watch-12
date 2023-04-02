@@ -1,4 +1,4 @@
-import { FilmMockTypes } from '../types/filmsMockType';
+import { FilmMockTypes } from '../types/films-mock-type';
 
 export const mockFilms: FilmMockTypes = [
   {
