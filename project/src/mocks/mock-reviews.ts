@@ -1,4 +1,4 @@
-import {ReviewMockTypes} from '../types/reviewMockType';
+import {ReviewMockTypes} from '../types/review-mock-type';
 
 export const mockReviews: ReviewMockTypes = [
   {
