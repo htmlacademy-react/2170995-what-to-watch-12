@@ -1,6 +1,13 @@
 import { Helmet } from 'react-helmet-async';
 
-export default function PlayerPage(): JSX.Element {
+// types
+import { FilmMockTypes } from '../../types/filmsMockType';
+
+type PlayerPageProps = {
+  films: FilmMockTypes;
+};
+
+export default function PlayerPage({ films }: PlayerPageProps): JSX.Element {
   return (
     <div className='player'>
       <Helmet>

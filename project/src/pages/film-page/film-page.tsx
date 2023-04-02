@@ -1,10 +1,22 @@
 import { Helmet } from 'react-helmet-async';
+import { Link, useParams } from 'react-router-dom';
 
 // components
+import UserBlock from '../../components/UserBlock';
 import MainLogo from '../../components/logo/Main-logo';
-import Footer from '../../components/Footer';
+import PageContent from '../../components/PageContent';
 
-export default function FilmPage(): JSX.Element {
+// types
+import { FilmMockTypes } from '../../types/filmsMockType';
+
+type FilmPageProps = {
+  films: FilmMockTypes;
+};
+
+export default function FilmPage({ films }: FilmPageProps): JSX.Element {
+  const params = useParams();
+  const filmInfo = films.find((film) => film.id === Number(params.id));
+
   return (
     <>
       <section className='film-card film-card--full'>
@@ -13,10 +25,7 @@ export default function FilmPage(): JSX.Element {
         </Helmet>
         <div className='film-card__hero'>
           <div className='film-card__bg'>
-            <img
-              src='img/bg-the-grand-budapest-hotel.jpg'
-              alt='The Grand Budapest Hotel'
-            />
+            <img src={filmInfo?.backgroundImage} alt={filmInfo?.name} />
           </div>
 
           <h1 className='visually-hidden'>WTW</h1>
@@ -24,31 +33,15 @@ export default function FilmPage(): JSX.Element {
           <header className='page-header film-card__head'>
             <MainLogo />
 
-            <ul className='user-block'>
-              <li className='user-block__item'>
-                <div className='user-block__avatar'>
-                  <img
-                    src='img/avatar.jpg'
-                    alt='User avatar'
-                    width='63'
-                    height='63'
-                  />
-                </div>
-              </li>
-              <li className='user-block__item'>
-                <a href='/' className='user-block__link'>
-                  Sign out
-                </a>
-              </li>
-            </ul>
+            <UserBlock />
           </header>
 
           <div className='film-card__wrap'>
             <div className='film-card__desc'>
-              <h2 className='film-card__title'>The Grand Budapest Hotel</h2>
+              <h2 className='film-card__title'>{filmInfo?.name}</h2>
               <p className='film-card__meta'>
-                <span className='film-card__genre'>Drama</span>
-                <span className='film-card__year'>2014</span>
+                <span className='film-card__genre'>{filmInfo?.genre}</span>
+                <span className='film-card__year'>{filmInfo?.released}</span>
               </p>
 
               <div className='film-card__buttons'>
@@ -69,11 +62,11 @@ export default function FilmPage(): JSX.Element {
                     <use xlinkHref='#add'></use>
                   </svg>
                   <span>My list</span>
-                  <span className='film-card__count'>9</span>
+                  <span className='film-card__count'>{films.length}</span>
                 </button>
-                <a href='add-review.html' className='btn film-card__button'>
+                <Link to='review' className='btn film-card__button'>
                   Add review
-                </a>
+                </Link>
               </div>
             </div>
           </div>
@@ -83,8 +76,8 @@ export default function FilmPage(): JSX.Element {
           <div className='film-card__info'>
             <div className='film-card__poster film-card__poster--big'>
               <img
-                src='img/the-grand-budapest-hotel-poster.jpg'
-                alt='The Grand Budapest Hotel poster'
+                src={filmInfo?.posterImage}
+                alt={filmInfo?.name}
                 width='218'
                 height='327'
               />
@@ -112,7 +105,7 @@ export default function FilmPage(): JSX.Element {
               </nav>
 
               <div className='film-rating'>
-                <div className='film-rating__score'>8,9</div>
+                <div className='film-rating__score'>{filmInfo?.rating}</div>
                 <p className='film-rating__meta'>
                   <span className='film-rating__level'>Very good</span>
                   <span className='film-rating__count'>240 ratings</span>
@@ -120,31 +113,14 @@ export default function FilmPage(): JSX.Element {
               </div>
 
               <div className='film-card__text'>
-                <p>
-                  In the 1930s, the Grand Budapest Hotel is a popular European
-                  ski resort, presided over by concierge Gustave H. (Ralph
-                  Fiennes). Zero, a junior lobby boy, becomes Gustave&prime;s
-                  friend and protege.
-                </p>
-
-                <p>
-                  Gustave prides himself on providing first-className service to
-                  the hotel&prime;s guests, including satisfying the sexual
-                  needs of the many elderly women who stay there. When one of
-                  Gustave&prime;s lovers dies mysteriously, Gustave finds
-                  himself the recipient of a priceless painting and the chief
-                  suspect in her murder.
-                </p>
+                {filmInfo?.description}
 
                 <p className='film-card__director'>
-                  <strong>Director: Wes Anderson</strong>
+                  <strong>{filmInfo?.director}</strong>
                 </p>
 
                 <p className='film-card__starring'>
-                  <strong>
-                    Starring: Bill Murray, Edward Norton, Jude Law, Willem Dafoe
-                    and other
-                  </strong>
+                  <strong>{filmInfo?.starring}</strong>
                 </p>
               </div>
             </div>
@@ -152,79 +128,7 @@ export default function FilmPage(): JSX.Element {
         </div>
       </section>
 
-      <div className='page-content'>
-        <section className='catalog catalog--like-this'>
-          <h2 className='catalog__title'>More like this</h2>
-
-          <div className='catalog__films-list'>
-            <article className='small-film-card catalog__films-card'>
-              <div className='small-film-card__image'>
-                <img
-                  src='img/fantastic-beasts-the-crimes-of-grindelwald.jpg'
-                  alt='Fantastic Beasts: The Crimes of Grindelwald'
-                  width='280'
-                  height='175'
-                />
-              </div>
-              <h3 className='small-film-card__title'>
-                <a className='small-film-card__link' href='film-page.html'>
-                  Fantastic Beasts: The Crimes of Grindelwald
-                </a>
-              </h3>
-            </article>
-
-            <article className='small-film-card catalog__films-card'>
-              <div className='small-film-card__image'>
-                <img
-                  src='img/bohemian-rhapsody.jpg'
-                  alt='Bohemian Rhapsody'
-                  width='280'
-                  height='175'
-                />
-              </div>
-              <h3 className='small-film-card__title'>
-                <a className='small-film-card__link' href='film-page.html'>
-                  Bohemian Rhapsody
-                </a>
-              </h3>
-            </article>
-
-            <article className='small-film-card catalog__films-card'>
-              <div className='small-film-card__image'>
-                <img
-                  src='img/macbeth.jpg'
-                  alt='Macbeth'
-                  width='280'
-                  height='175'
-                />
-              </div>
-              <h3 className='small-film-card__title'>
-                <a className='small-film-card__link' href='film-page.html'>
-                  Macbeth
-                </a>
-              </h3>
-            </article>
-
-            <article className='small-film-card catalog__films-card'>
-              <div className='small-film-card__image'>
-                <img
-                  src='img/aviator.jpg'
-                  alt='Aviator'
-                  width='280'
-                  height='175'
-                />
-              </div>
-              <h3 className='small-film-card__title'>
-                <a className='small-film-card__link' href='film-page.html'>
-                  Aviator
-                </a>
-              </h3>
-            </article>
-          </div>
-        </section>
-
-        <Footer />
-      </div>
+      <PageContent />
     </>
   );
 }

@@ -1,16 +1,22 @@
 // components
-import FilmCard from '../../components/FilmCard';
+import FilmList from '../../components/FilmList';
 import MainLogo from '../../components/logo/Main-logo';
+import UserBlock from '../../components/UserBlock';
 import Footer from '../../components/Footer';
 
 // types
-import { filmCardDescription } from '../../types/filmCardDescription';
+import { FilmCardDescription } from '../../types/filmCardDescription';
+import { FilmMockTypes } from '../../types/filmsMockType';
+
+type MainPageProps = {
+  filmCardDescription: FilmCardDescription;
+  films: FilmMockTypes;
+};
 
 export default function MainPage({
-  title,
-  genre,
-  year,
-}: filmCardDescription): JSX.Element {
+  filmCardDescription,
+  films,
+}: MainPageProps): JSX.Element {
   return (
     <>
       <section className='film-card'>
@@ -25,24 +31,7 @@ export default function MainPage({
 
         <header className='page-header film-card__head'>
           <MainLogo />
-
-          <ul className='user-block'>
-            <li className='user-block__item'>
-              <div className='user-block__avatar'>
-                <img
-                  src='img/avatar.jpg'
-                  alt='User avatar'
-                  width='63'
-                  height='63'
-                />
-              </div>
-            </li>
-            <li className='user-block__item'>
-              <a href='/' className='user-block__link'>
-                Sign out
-              </a>
-            </li>
-          </ul>
+          <UserBlock />
         </header>
 
         <div className='film-card__wrap'>
@@ -57,10 +46,14 @@ export default function MainPage({
             </div>
 
             <div className='film-card__desc'>
-              <h2 className='film-card__title'>The Grand Budapest Hotel</h2>
+              <h2 className='film-card__title'>{filmCardDescription.title}</h2>
               <p className='film-card__meta'>
-                <span className='film-card__genre'>Drama</span>
-                <span className='film-card__year'>2014</span>
+                <span className='film-card__genre'>
+                  {filmCardDescription.genre}
+                </span>
+                <span className='film-card__year'>
+                  {filmCardDescription.year}
+                </span>
               </p>
 
               <div className='film-card__buttons'>
@@ -81,7 +74,7 @@ export default function MainPage({
                     <use xlinkHref='#add'></use>
                   </svg>
                   <span>My list</span>
-                  <span className='film-card__count'>9</span>
+                  <span className='film-card__count'>{films.length}</span>
                 </button>
               </div>
             </div>
@@ -146,7 +139,7 @@ export default function MainPage({
           </ul>
 
           <div className='catalog__films-list'>
-            <FilmCard />
+            <FilmList films={films} />
           </div>
           <div className='catalog__more'>
             <button className='catalog__button' type='button'>
