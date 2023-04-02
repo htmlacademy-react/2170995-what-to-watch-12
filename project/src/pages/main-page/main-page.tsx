@@ -1,6 +1,6 @@
 // components
 import FilmList from '../../components/film-list/film-list';
-import MainLogo from '../../components/logo/main-logo';
+import MainLogo from '../../components/logo/logo-main';
 import UserBlock from '../../components/user-block/user-block';
 import Footer from '../../components/footer/footer';
 

@@ -2,7 +2,7 @@ import { Helmet } from 'react-helmet-async';
 
 // components
 import UserBlock from '../../components/user-block/user-block';
-import MainLogo from '../../components/logo/main-logo';
+import MainLogo from '../../components/logo/logo-main';
 import Footer from '../../components/footer/footer';
 
 // types

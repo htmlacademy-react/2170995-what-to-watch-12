@@ -3,7 +3,7 @@ import { Link, useParams } from 'react-router-dom';
 
 // components
 import UserBlock from '../../components/user-block/user-block';
-import MainLogo from '../../components/logo/main-logo';
+import MainLogo from '../../components/logo/logo-main';
 import PageContent from '../../components/page-content/page-content';
 
 // types
