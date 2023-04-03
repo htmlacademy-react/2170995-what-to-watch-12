@@ -1,25 +1,19 @@
-import { useState } from 'react';
-import { TypeFilms } from '../../types/type-film';
+// components
 import FilmCard from '../film-card/film-card';
 
+// types
+import { FilmMockTypes } from '../../types/films-mock-type';
+
 type FilmListProps = {
-  films: TypeFilms;
-}
+  films: FilmMockTypes;
+};
 
-function FilmList({ films }: FilmListProps): JSX.Element {
-  const setActiveFilm = useState(0)[1];
-
+export default function FilmList({ films }: FilmListProps): JSX.Element {
   return (
-    <div className="catalog__films-list">
+    <div className='catalog__films-list'>
       {films.map((film) => (
-        <FilmCard
-          onMouseEnterHandler={() => { setActiveFilm(film.id); }}
-          key={film.id}
-          film={film}
-        />
+        <FilmCard film={film} key={film.id} />
       ))}
     </div>
   );
 }
-
-export default FilmList;

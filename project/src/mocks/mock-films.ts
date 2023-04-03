@@ -1,6 +1,6 @@
-import { TypeFilms } from '../types/type-film';
+import { FilmMockTypes } from '../types/films-mock-type';
 
-export const mockFilms: TypeFilms = [
+export const mockFilms: FilmMockTypes = [
   {
     id: 13,
     name: 'War of the Worlds',

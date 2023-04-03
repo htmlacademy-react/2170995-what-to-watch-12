@@ -1,0 +1,25 @@
+.notFound {
+  height: 80vh;
+  background-color: rgb(64, 23, 23);
+  color: bisque;
+}
+
+.notFoundTitleWrapper {
+  text-align: center;
+}
+
+.notFoundTitle {
+  font-size: 4em;
+}
+
+.notFoundLink {
+  text-decoration: none;
+  font-size: 2em;
+  color:rgb(176, 146, 110);
+  cursor: pointer;
+}
+
+.notFoundLink:hover {
+  color: orange;
+  text-decoration: underline;
+}

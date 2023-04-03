@@ -1,43 +1,47 @@
-import { useParams } from 'react-router-dom';
-import { TypeFilms } from '../../types/type-film';
+import { Helmet } from 'react-helmet-async';
+
+// types
+import { FilmMockTypes } from '../../types/films-mock-type';
 
 type PlayerPageProps = {
-  films: TypeFilms;
-}
+  films: FilmMockTypes;
+};
 
-function PlayerPage({ films }: PlayerPageProps): JSX.Element {
-  const params = useParams();
-  const filmInVideo = films.find((film) => film.id === Number(params.id));
-
+export default function PlayerPage({ films }: PlayerPageProps): JSX.Element {
   return (
-    <div className="player">
-      <video src={filmInVideo?.videoLink} className="player__video" poster="img/player-poster.jpg"></video>
+    <div className='player'>
+      <Helmet>
+        <title>WTW Player</title>
+      </Helmet>
+      <video src='#' className='player__video' poster='img/player-poster.jpg' />
 
-      <button type="button" className="player__exit">
+      <button type='button' className='player__exit'>
         Exit
       </button>
 
-      <div className="player__controls">
-        <div className="player__controls-row">
-          <div className="player__time">
-            <progress className="player__progress" value="30" max="100"></progress>
-            <div className="player__toggler" style={{ left: '30%' }}>Toggler</div>
+      <div className='player__controls'>
+        <div className='player__controls-row'>
+          <div className='player__time'>
+            <progress className='player__progress' value='30' max='100' />
+            <div className='player__toggler' style={{ left: '30%' }}>
+              Toggler
+            </div>
           </div>
-          <div className="player__time-value">1:30:29</div>
+          <div className='player__time-value'>1:30:29</div>
         </div>
 
-        <div className="player__controls-row">
-          <button type="button" className="player__play">
-            <svg viewBox="0 0 19 19" width="19" height="19">
-              <use xlinkHref="#play-s"></use>
+        <div className='player__controls-row'>
+          <button type='button' className='player__play'>
+            <svg viewBox='0 0 19 19' width='19' height='19'>
+              <use xlinkHref='#play-s'></use>
             </svg>
             <span>Play</span>
           </button>
-          <div className="player__name">Transpotting</div>
+          <div className='player__name'>Transpotting</div>
 
-          <button type="button" className="player__full-screen">
-            <svg viewBox="0 0 27 27" width="27" height="27">
-              <use xlinkHref="#full-screen"></use>
+          <button type='button' className='player__full-screen'>
+            <svg viewBox='0 0 27 27' width='27' height='27'>
+              <use xlinkHref='#full-screen'></use>
             </svg>
             <span>Full screen</span>
           </button>
@@ -46,5 +50,3 @@ function PlayerPage({ films }: PlayerPageProps): JSX.Element {
     </div>
   );
 }
-
-export default PlayerPage;

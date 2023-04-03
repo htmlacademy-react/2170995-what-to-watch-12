@@ -2,15 +2,15 @@ export enum AppRoute {
   Main = '/',
   SignIn = '/login',
   MyList = '/mylist',
-  Films = '/films/',
-  Film = ':id',
-  AddReview = ':review',
-  Player = '/player/:id',
-  PageNotFound = '*'
+  Film = '/films/:id',
+  AddReview = '/films/:id/review',
+  Player = 'player/:id'
 }
 
 export enum AuthorizationStatus {
   Auth = 'AUTH',
   NoAuth = 'NO_AUTH',
-  Unknown = 'UNKNOWN',
+  Unknown = 'UNKNOWN'
 }
+
+export const PLAYING_DELAY = 1000;

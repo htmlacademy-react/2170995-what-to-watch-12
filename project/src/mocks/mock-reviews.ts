@@ -1,6 +1,6 @@
-import { TypeReviews } from '../types/type-review';
+import {ReviewMockTypes} from '../types/review-mock-type';
 
-export const mockReviews: TypeReviews = [
+export const mockReviews: ReviewMockTypes = [
   {
     comment: 'Discerning travellers and Wes Anderson fans will luxuriate in the glorious Mittel-European kitsch of one of the directors funniest and most exquisitely designed movies in years.',
     date: 'Fri Mar 10 2023 23:32:20 GMT+0300 (Moscow Standard Time)',

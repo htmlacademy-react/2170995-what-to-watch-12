@@ -1,11 +1,9 @@
-import LogoLight from '../logo/logo-light';
+import FooterLogo from '../logo/logo-footer';
 
-function Footer(): JSX.Element {
+export default function Footer(): JSX.Element {
   return (
     <footer className='page-footer'>
-      <div className='logo'>
-        <LogoLight />
-      </div>
+      <FooterLogo />
 
       <div className='copyright'>
         <p>© 2019 What to watch Ltd.</p>
@@ -13,5 +11,3 @@ function Footer(): JSX.Element {
     </footer>
   );
 }
-
-export default Footer;

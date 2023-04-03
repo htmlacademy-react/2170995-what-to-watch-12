@@ -1,20 +1,22 @@
-import { Link } from 'react-router-dom';
-
+// components
 import FilmList from '../../components/film-list/film-list';
-import Logo from '../../components/logo/logo';
-import Footer from '../../components/footer/footer';
+import MainLogo from '../../components/logo/logo-main';
 import UserBlock from '../../components/user-block/user-block';
+import Footer from '../../components/footer/footer';
 
-import { TypeFilms } from '../../types/type-film';
-import { TypeMainPage } from '../../types/type-main-page';
+// types
+import { FilmCardDescription } from '../../types/film-card-description';
+import { FilmMockTypes } from '../../types/films-mock-type';
 
-type MainPagaProps = {
-  title: TypeMainPage;
-  films: TypeFilms;
-}
+type MainPageProps = {
+  filmCardDescription: FilmCardDescription;
+  films: FilmMockTypes;
+};
 
-
-function MainPage({ title, films }: MainPagaProps): JSX.Element {
+export default function MainPage({
+  filmCardDescription,
+  films,
+}: MainPageProps): JSX.Element {
   return (
     <>
       <section className='film-card'>
@@ -28,9 +30,7 @@ function MainPage({ title, films }: MainPagaProps): JSX.Element {
         <h1 className='visually-hidden'>WTW</h1>
 
         <header className='page-header film-card__head'>
-          <div className='logo'>
-            <Logo />
-          </div>
+          <MainLogo />
           <UserBlock />
         </header>
 
@@ -46,10 +46,14 @@ function MainPage({ title, films }: MainPagaProps): JSX.Element {
             </div>
 
             <div className='film-card__desc'>
-              <h2 className='film-card__title'>{title.title}</h2>
+              <h2 className='film-card__title'>{filmCardDescription.title}</h2>
               <p className='film-card__meta'>
-                <span className='film-card__genre'>{title.genre}</span>
-                <span className='film-card__year'>{title.year}</span>
+                <span className='film-card__genre'>
+                  {filmCardDescription.genre}
+                </span>
+                <span className='film-card__year'>
+                  {filmCardDescription.year}
+                </span>
               </p>
 
               <div className='film-card__buttons'>
@@ -81,64 +85,62 @@ function MainPage({ title, films }: MainPagaProps): JSX.Element {
       <div className='page-content'>
         <section className='catalog'>
           <h2 className='catalog__title visually-hidden'>Catalog</h2>
-
           <ul className='catalog__genres-list'>
             <li className='catalog__genres-item catalog__genres-item--active'>
-              <Link to='/#' className='catalog__genres-link'>
+              <a href='/#' className='catalog__genres-link'>
                 All genres
-              </Link>
+              </a>
             </li>
             <li className='catalog__genres-item'>
-              <Link to='/#' className='catalog__genres-link'>
+              <a href='/#' className='catalog__genres-link'>
                 Comedies
-              </Link>
+              </a>
             </li>
             <li className='catalog__genres-item'>
-              <Link to='/#' className='catalog__genres-link'>
+              <a href='/#' className='catalog__genres-link'>
                 Crime
-              </Link>
+              </a>
             </li>
             <li className='catalog__genres-item'>
-              <Link to='/#' className='catalog__genres-link'>
+              <a href='/#' className='catalog__genres-link'>
                 Documentary
-              </Link>
+              </a>
             </li>
             <li className='catalog__genres-item'>
-              <Link to='/#' className='catalog__genres-link'>
+              <a href='/#' className='catalog__genres-link'>
                 Dramas
-              </Link>
+              </a>
             </li>
             <li className='catalog__genres-item'>
-              <Link to='/#' className='catalog__genres-link'>
+              <a href='/#' className='catalog__genres-link'>
                 Horror
-              </Link>
+              </a>
             </li>
             <li className='catalog__genres-item'>
-              <Link to='/#' className='catalog__genres-link'>
+              <a href='/#' className='catalog__genres-link'>
                 Kids & Family
-              </Link>
+              </a>
             </li>
             <li className='catalog__genres-item'>
-              <Link to='/#' className='catalog__genres-link'>
+              <a href='/#' className='catalog__genres-link'>
                 Romance
-              </Link>
+              </a>
             </li>
             <li className='catalog__genres-item'>
-              <Link to='/#' className='catalog__genres-link'>
+              <a href='/#' className='catalog__genres-link'>
                 Sci-Fi
-              </Link>
+              </a>
             </li>
             <li className='catalog__genres-item'>
-              <Link to='/#' className='catalog__genres-link'>
+              <a href='/#' className='catalog__genres-link'>
                 Thrillers
-              </Link>
+              </a>
             </li>
           </ul>
 
           <div className='catalog__films-list'>
             <FilmList films={films} />
           </div>
-
           <div className='catalog__more'>
             <button className='catalog__button' type='button'>
               Show more
@@ -151,5 +153,3 @@ function MainPage({ title, films }: MainPagaProps): JSX.Element {
     </>
   );
 }
-
-export default MainPage;

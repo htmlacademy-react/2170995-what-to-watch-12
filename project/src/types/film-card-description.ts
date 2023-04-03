@@ -1,4 +1,4 @@
-export type TypeMainPage = {
+export type FilmCardDescription = {
   title: string;
   genre: string;
   year: number;
