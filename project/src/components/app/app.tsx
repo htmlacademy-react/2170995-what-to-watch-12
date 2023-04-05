@@ -14,6 +14,7 @@ import PrivateRoute from '../private-route/private-route';
 // types
 import { FilmCardDescription } from '../../types/film-card-description';
 import { FilmMockTypes } from '../../types/films-mock-type';
+import { ReviewMockTypes } from '../../types/review-mock-type';
 
 // const
 import { AppRoute, AuthorizationStatus } from '../../const';
@@ -21,9 +22,10 @@ import { AppRoute, AuthorizationStatus } from '../../const';
 type AppProps = {
   filmCardDescription: FilmCardDescription;
   films: FilmMockTypes;
+  reviews: ReviewMockTypes;
 };
 
-function App({ filmCardDescription, films }: AppProps): JSX.Element {
+function App({ filmCardDescription, films, reviews }: AppProps): JSX.Element {
   return (
     <HelmetProvider>
       <BrowserRouter>
@@ -43,7 +45,10 @@ function App({ filmCardDescription, films }: AppProps): JSX.Element {
             element={<AddReviewPage films={films} />}
           />
 
-          <Route path={AppRoute.Film} element={<FilmPage films={films} />} />
+          <Route
+            path={AppRoute.Film}
+            element={<FilmPage films={films} reviews={reviews} />}
+          />
 
           <Route
             path={AppRoute.MyList}

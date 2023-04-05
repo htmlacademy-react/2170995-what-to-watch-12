@@ -13,4 +13,10 @@ export enum AuthorizationStatus {
   Unknown = 'UNKNOWN'
 }
 
+export enum FilmTabsType {
+  Overview = 'Overview',
+  Details = 'Details',
+  Reviews = 'Reviews'
+}
+
 export const PLAYING_DELAY = 1000;

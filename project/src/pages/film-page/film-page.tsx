@@ -5,15 +5,21 @@ import { Link, useParams } from 'react-router-dom';
 import UserBlock from '../../components/user-block/user-block';
 import MainLogo from '../../components/logo/logo-main';
 import PageContent from '../../components/page-content/page-content';
+import FilmTabs from '../../components/film-tabs/film-tabs';
 
 // types
 import { FilmMockTypes } from '../../types/films-mock-type';
+import { ReviewMockTypes } from '../../types/review-mock-type';
 
 type FilmPageProps = {
   films: FilmMockTypes;
+  reviews: ReviewMockTypes;
 };
 
-export default function FilmPage({ films }: FilmPageProps): JSX.Element {
+export default function FilmPage({
+  films,
+  reviews,
+}: FilmPageProps): JSX.Element {
   const params = useParams();
   const filmInfo = films.find((film) => film.id === Number(params.id));
 
@@ -82,53 +88,12 @@ export default function FilmPage({ films }: FilmPageProps): JSX.Element {
                 height='327'
               />
             </div>
-
-            <div className='film-card__desc'>
-              <nav className='film-nav film-card__nav'>
-                <ul className='film-nav__list'>
-                  <li className='film-nav__item film-nav__item--active'>
-                    <a href='/#' className='film-nav__link'>
-                      Overview
-                    </a>
-                  </li>
-                  <li className='film-nav__item'>
-                    <a href='/#' className='film-nav__link'>
-                      Details
-                    </a>
-                  </li>
-                  <li className='film-nav__item'>
-                    <a href='/#' className='film-nav__link'>
-                      Reviews
-                    </a>
-                  </li>
-                </ul>
-              </nav>
-
-              <div className='film-rating'>
-                <div className='film-rating__score'>{filmInfo?.rating}</div>
-                <p className='film-rating__meta'>
-                  <span className='film-rating__level'>Very good</span>
-                  <span className='film-rating__count'>240 ratings</span>
-                </p>
-              </div>
-
-              <div className='film-card__text'>
-                {filmInfo?.description}
-
-                <p className='film-card__director'>
-                  <strong>{filmInfo?.director}</strong>
-                </p>
-
-                <p className='film-card__starring'>
-                  <strong>{filmInfo?.starring}</strong>
-                </p>
-              </div>
-            </div>
+            <FilmTabs film={filmInfo} reviews={reviews} />
           </div>
         </div>
       </section>
 
-      <PageContent />
+      <PageContent films={films} filmInfo={filmInfo} />
     </>
   );
 }
