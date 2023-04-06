@@ -1,5 +1,5 @@
 // components
-import FilmCard from '../film-card/film-card';
+import FilmList from '../film-list/film-list';
 import Footer from '../footer/footer';
 
 // types
@@ -15,25 +15,22 @@ export default function PageContent({
   filmInfo,
 }: PageContentProps): JSX.Element {
   const SIMILAR_LIST_COUNT = 4;
-  const similarList = films.filter((film) => film.genre === filmInfo?.genre);
+  const similarList = films
+    .filter(
+      (film) => film.id !== filmInfo?.id && film.genre === filmInfo?.genre
+    )
+    .slice(0, SIMILAR_LIST_COUNT);
   return (
     <div className='page-content'>
-      <section className='catalog catalog--like-this'>
-        <h2 className='catalog__title'>More like this</h2>
+      {films.length !== 0 ? (
+        <section className='catalog catalog--like-this'>
+          <h2 className='catalog__title'>More like this</h2>
 
-        <div className='catalog__films-list'>
-          {similarList.length > 1
-            ? similarList
-              .slice(0, SIMILAR_LIST_COUNT)
-              .map(
-                (film) =>
-                  filmInfo?.id !== film.id && (
-                    <FilmCard film={film} key={film.id} />
-                  )
-              )
-            : 'No similar films'}
-        </div>
-      </section>
+          <FilmList films={similarList} />
+        </section>
+      ) : (
+        'No similar films'
+      )}
 
       <Footer />
     </div>
