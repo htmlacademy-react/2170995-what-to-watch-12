@@ -11,19 +11,20 @@ type FilmReviewsProps = {
 export default function FilmReviews({
   reviews,
 }: FilmReviewsProps): JSX.Element {
-  const lengthReviews = reviews.length;
-  const reviewsColumn = (start: number, end: number) =>
-    reviews
-      .slice(start, end)
-      .map((review) => <FilmReview review={review} key={review.id} />);
+  const evenReviews = reviews.filter((_, index) => index % 2 === 0);
+  const oddReviews = reviews.filter((_, index) => index % 2 !== 0);
 
   return (
     <div className='film-card__reviews film-card__row'>
       <div className='film-card__reviews-col'>
-        {reviewsColumn(0, lengthReviews / 2)}
+        {evenReviews.map((review) => (
+          <FilmReview review={review} key={review.id} />
+        ))}
       </div>
       <div className='film-card__reviews-col'>
-        {reviewsColumn(lengthReviews / 2, lengthReviews)}
+        {oddReviews.map((review) => (
+          <FilmReview review={review} key={review.id} />
+        ))}
       </div>
     </div>
   );
