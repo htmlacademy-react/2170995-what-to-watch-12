@@ -11,3 +11,8 @@ export type ReviewMockType = {
 
 
 export type ReviewMockTypes = ReviewMockType[];
+
+export type FilmReviewMockType = {
+  id: number;
+  reviews: ReviewMockTypes;
+}

@@ -1,77 +1,36 @@
+// components
+import FilmList from '../film-list/film-list';
 import Footer from '../footer/footer';
 
-export default function PageContent(): JSX.Element {
+// types
+import { FilmMockTypes, FilmMockType } from '../../types/films-mock-type';
+
+type PageContentProps = {
+  films: FilmMockTypes;
+  filmInfo: FilmMockType | undefined;
+};
+
+export default function PageContent({
+  films,
+  filmInfo,
+}: PageContentProps): JSX.Element {
+  const SIMILAR_LIST_COUNT = 4;
+  const similarList = films
+    .filter(
+      (film) => film.id !== filmInfo?.id && film.genre === filmInfo?.genre
+    )
+    .slice(0, SIMILAR_LIST_COUNT);
   return (
     <div className='page-content'>
-      <section className='catalog catalog--like-this'>
-        <h2 className='catalog__title'>More like this</h2>
+      {films.length !== 0 ? (
+        <section className='catalog catalog--like-this'>
+          <h2 className='catalog__title'>More like this</h2>
 
-        <div className='catalog__films-list'>
-          <article className='small-film-card catalog__films-card'>
-            <div className='small-film-card__image'>
-              <img
-                src='img/fantastic-beasts-the-crimes-of-grindelwald.jpg'
-                alt='Fantastic Beasts: The Crimes of Grindelwald'
-                width='280'
-                height='175'
-              />
-            </div>
-            <h3 className='small-film-card__title'>
-              <a className='small-film-card__link' href='film-page.html'>
-                Fantastic Beasts: The Crimes of Grindelwald
-              </a>
-            </h3>
-          </article>
-
-          <article className='small-film-card catalog__films-card'>
-            <div className='small-film-card__image'>
-              <img
-                src='img/bohemian-rhapsody.jpg'
-                alt='Bohemian Rhapsody'
-                width='280'
-                height='175'
-              />
-            </div>
-            <h3 className='small-film-card__title'>
-              <a className='small-film-card__link' href='film-page.html'>
-                Bohemian Rhapsody
-              </a>
-            </h3>
-          </article>
-
-          <article className='small-film-card catalog__films-card'>
-            <div className='small-film-card__image'>
-              <img
-                src='img/macbeth.jpg'
-                alt='Macbeth'
-                width='280'
-                height='175'
-              />
-            </div>
-            <h3 className='small-film-card__title'>
-              <a className='small-film-card__link' href='film-page.html'>
-                Macbeth
-              </a>
-            </h3>
-          </article>
-
-          <article className='small-film-card catalog__films-card'>
-            <div className='small-film-card__image'>
-              <img
-                src='img/aviator.jpg'
-                alt='Aviator'
-                width='280'
-                height='175'
-              />
-            </div>
-            <h3 className='small-film-card__title'>
-              <a className='small-film-card__link' href='film-page.html'>
-                Aviator
-              </a>
-            </h3>
-          </article>
-        </div>
-      </section>
+          <FilmList films={similarList} />
+        </section>
+      ) : (
+        'No similar films'
+      )}
 
       <Footer />
     </div>

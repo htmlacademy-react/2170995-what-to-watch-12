@@ -13,7 +13,7 @@ export const mockReviews: ReviewMockTypes = [
   },
 
   {
-    id: 1,
+    id: 2,
     user: {
       id: 13,
       name: 'Zak'
@@ -24,7 +24,7 @@ export const mockReviews: ReviewMockTypes = [
   },
 
   {
-    id: 2,
+    id: 3,
     user: {
       id: 12,
       name: 'Isaac'
@@ -35,7 +35,7 @@ export const mockReviews: ReviewMockTypes = [
   },
 
   {
-    id: 1,
+    id: 4,
     user: {
       id: 10,
       name: 'Max'
@@ -46,7 +46,7 @@ export const mockReviews: ReviewMockTypes = [
   },
 
   {
-    id: 2,
+    id: 5,
     user: {
       id: 16,
       name: 'Mollie'
@@ -57,7 +57,7 @@ export const mockReviews: ReviewMockTypes = [
   },
 
   {
-    id: 1,
+    id: 6,
     user: {
       id: 11,
       name: 'Jack'
@@ -68,7 +68,7 @@ export const mockReviews: ReviewMockTypes = [
   },
 
   {
-    id: 2,
+    id: 7,
     user: {
       id: 15,
       name: 'Kendall'
@@ -79,7 +79,7 @@ export const mockReviews: ReviewMockTypes = [
   },
 
   {
-    id: 1,
+    id: 8,
     user: {
       id: 18,
       name: 'Sophie'
