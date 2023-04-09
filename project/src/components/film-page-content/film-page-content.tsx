@@ -5,15 +5,15 @@ import Footer from '../footer/footer';
 // types
 import { FilmMockTypes, FilmMockType } from '../../types/films-mock-type';
 
-type PageContentProps = {
+type FilmPageContentProps = {
   films: FilmMockTypes;
   filmInfo: FilmMockType | undefined;
 };
 
-export default function PageContent({
+export default function FilmPageContent({
   films,
   filmInfo,
-}: PageContentProps): JSX.Element {
+}: FilmPageContentProps): JSX.Element {
   const SIMILAR_LIST_COUNT = 4;
   const similarList = films
     .filter(

@@ -4,7 +4,7 @@ import { Link, useParams } from 'react-router-dom';
 // components
 import UserBlock from '../../components/user-block/user-block';
 import MainLogo from '../../components/logo/logo-main';
-import PageContent from '../../components/page-content/page-content';
+import FilmPageContent from '../../components/film-page-content/film-page-content';
 import FilmTabs from '../../components/film-tabs/film-tabs';
 
 // types
@@ -93,7 +93,7 @@ export default function FilmPage({
         </div>
       </section>
 
-      <PageContent films={films} filmInfo={filmInfo} />
+      <FilmPageContent films={films} filmInfo={filmInfo} />
     </>
   );
 }
