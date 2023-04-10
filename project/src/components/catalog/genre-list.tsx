@@ -3,17 +3,11 @@ import cn from 'classnames';
 import { useAppDispatch, useAppSelector } from '../../hooks';
 import { changeGenre } from '../../store/action';
 
-// types
-import { FilmMockTypes } from '../../types/films-mock-type';
-
 // const
 import { DEFAULT_GENRE } from '../../const';
 
-type GenreListProps = {
-  films: FilmMockTypes;
-};
-
-export default function GenreList({ films }: GenreListProps): JSX.Element {
+export default function GenreList(): JSX.Element {
+  const films = useAppSelector((state) => state.films);
   const currentGenre = useAppSelector((state) => state.genre);
   const dispatch = useAppDispatch();
 

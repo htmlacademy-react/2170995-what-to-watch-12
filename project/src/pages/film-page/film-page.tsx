@@ -1,6 +1,8 @@
 import { Helmet } from 'react-helmet-async';
 import { Link, useParams } from 'react-router-dom';
 
+import { useAppSelector } from '../../hooks';
+
 // components
 import UserBlock from '../../components/user-block/user-block';
 import MainLogo from '../../components/logo/logo-main';
@@ -8,18 +10,14 @@ import FilmPageContent from '../../components/film-page-content/film-page-conten
 import FilmTabs from '../../components/film-tabs/film-tabs';
 
 // types
-import { FilmMockTypes } from '../../types/films-mock-type';
 import { ReviewMockTypes } from '../../types/review-mock-type';
 
 type FilmPageProps = {
-  films: FilmMockTypes;
   reviews: ReviewMockTypes;
 };
 
-export default function FilmPage({
-  films,
-  reviews,
-}: FilmPageProps): JSX.Element {
+export default function FilmPage({ reviews }: FilmPageProps): JSX.Element {
+  const films = useAppSelector((state) => state.films);
   const params = useParams();
   const filmInfo = films.find((film) => film.id === Number(params.id));
 
@@ -93,7 +91,7 @@ export default function FilmPage({
         </div>
       </section>
 
-      <FilmPageContent films={films} filmInfo={filmInfo} />
+      <FilmPageContent filmInfo={filmInfo} />
     </>
   );
 }

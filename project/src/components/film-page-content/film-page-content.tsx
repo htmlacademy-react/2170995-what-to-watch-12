@@ -1,19 +1,20 @@
+import { useAppSelector } from '../../hooks';
+
 // components
 import FilmList from '../film-list/film-list';
 import Footer from '../footer/footer';
 
 // types
-import { FilmMockTypes, FilmMockType } from '../../types/films-mock-type';
+import { FilmMockType } from '../../types/films-mock-type';
 
 type FilmPageContentProps = {
-  films: FilmMockTypes;
   filmInfo: FilmMockType | undefined;
 };
 
 export default function FilmPageContent({
-  films,
   filmInfo,
 }: FilmPageContentProps): JSX.Element {
+  const films = useAppSelector((state) => state.films);
   const SIMILAR_LIST_COUNT = 4;
   const similarList = films
     .filter(

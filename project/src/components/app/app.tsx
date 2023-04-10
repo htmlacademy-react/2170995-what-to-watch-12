@@ -1,8 +1,6 @@
 import { Routes, Route, BrowserRouter } from 'react-router-dom';
 import { HelmetProvider } from 'react-helmet-async';
 
-import { useAppSelector } from '../../hooks';
-
 // pages
 import MainPage from '../../pages/main-page/main-page';
 import AddReviewPage from '../../pages/add-review-page/add-review-page';
@@ -26,44 +24,32 @@ type AppProps = {
 };
 
 function App({ filmCardDescription, reviews }: AppProps): JSX.Element {
-  const films = useAppSelector((state) => state.films);
   return (
     <HelmetProvider>
       <BrowserRouter>
         <Routes>
           <Route
             path={AppRoute.Main}
-            element={
-              <MainPage
-                filmCardDescription={filmCardDescription}
-                films={films}
-              />
-            }
+            element={<MainPage filmCardDescription={filmCardDescription} />}
           />
 
-          <Route
-            path={AppRoute.AddReview}
-            element={<AddReviewPage films={films} />}
-          />
+          <Route path={AppRoute.AddReview} element={<AddReviewPage />} />
 
           <Route
             path={AppRoute.Film}
-            element={<FilmPage films={films} reviews={reviews} />}
+            element={<FilmPage reviews={reviews} />}
           />
 
           <Route
             path={AppRoute.MyList}
             element={
               <PrivateRoute authorizationStatus={AuthorizationStatus.Auth}>
-                <MyListPage films={films} />
+                <MyListPage />
               </PrivateRoute>
             }
           />
 
-          <Route
-            path={AppRoute.Player}
-            element={<PlayerPage films={films} />}
-          />
+          <Route path={AppRoute.Player} element={<PlayerPage />} />
 
           <Route path={AppRoute.SignIn} element={<SignInPage />} />
 

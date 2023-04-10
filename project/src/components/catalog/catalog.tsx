@@ -24,7 +24,7 @@ export default function Catalog(): JSX.Element {
   return (
     <section className='catalog'>
       <h2 className='catalog__title visually-hidden'>Catalog</h2>
-      <GenreList films={films} />
+      <GenreList />
       <FilmList films={filmsByGenre} />
     </section>
   );
