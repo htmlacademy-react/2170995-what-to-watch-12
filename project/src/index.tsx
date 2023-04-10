@@ -3,7 +3,7 @@ import ReactDOM from 'react-dom/client';
 import { Provider } from 'react-redux';
 import App from './components/app/app';
 import { store } from './store';
-import { getFilmListByGenre } from './store/action';
+import { changeFilm } from './store/action';
 
 import { mockFilms } from './mocks/mock-films';
 import { mockReviews } from './mocks/mock-reviews';
@@ -13,7 +13,7 @@ const root = ReactDOM.createRoot(
 );
 
 const films = mockFilms;
-store.dispatch(getFilmListByGenre({ films }));
+store.dispatch(changeFilm({ films }));
 
 root.render(
   <React.StrictMode>
@@ -24,7 +24,6 @@ root.render(
           genre: 'Drama',
           year: 2014,
         }}
-        films={mockFilms}
         reviews={mockReviews}
       />
     </Provider>

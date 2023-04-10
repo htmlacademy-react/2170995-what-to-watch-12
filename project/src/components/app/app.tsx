@@ -1,6 +1,8 @@
 import { Routes, Route, BrowserRouter } from 'react-router-dom';
 import { HelmetProvider } from 'react-helmet-async';
 
+import { useAppSelector } from '../../hooks';
+
 // pages
 import MainPage from '../../pages/main-page/main-page';
 import AddReviewPage from '../../pages/add-review-page/add-review-page';
@@ -13,7 +15,6 @@ import PrivateRoute from '../private-route/private-route';
 
 // types
 import { FilmCardDescription } from '../../types/film-card-description';
-import { FilmMockTypes } from '../../types/films-mock-type';
 import { ReviewMockTypes } from '../../types/review-mock-type';
 
 // const
@@ -21,11 +22,11 @@ import { AppRoute, AuthorizationStatus } from '../../const';
 
 type AppProps = {
   filmCardDescription: FilmCardDescription;
-  films: FilmMockTypes;
   reviews: ReviewMockTypes;
 };
 
-function App({ filmCardDescription, films, reviews }: AppProps): JSX.Element {
+function App({ filmCardDescription, reviews }: AppProps): JSX.Element {
+  const films = useAppSelector((state) => state.films);
   return (
     <HelmetProvider>
       <BrowserRouter>
