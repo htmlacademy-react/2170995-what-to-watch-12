@@ -1,13 +1,9 @@
 import { Helmet } from 'react-helmet-async';
 
-// types
-import { FilmMockTypes } from '../../types/films-mock-type';
+// import { useAppSelector } from '../../hooks';
 
-type PlayerPageProps = {
-  films: FilmMockTypes;
-};
-
-export default function PlayerPage({ films }: PlayerPageProps): JSX.Element {
+export default function PlayerPage(): JSX.Element {
+  // const films = useAppSelector((state) => state.films);
   return (
     <div className='player'>
       <Helmet>

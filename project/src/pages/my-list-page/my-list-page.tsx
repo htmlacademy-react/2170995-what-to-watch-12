@@ -1,18 +1,14 @@
 import { Helmet } from 'react-helmet-async';
 
+import { useAppSelector } from '../../hooks';
+
 // components
 import UserBlock from '../../components/user-block/user-block';
 import MainLogo from '../../components/logo/logo-main';
 import Footer from '../../components/footer/footer';
 
-// types
-import { FilmMockTypes } from '../../types/films-mock-type';
-
-type MyListPageProps = {
-  films: FilmMockTypes;
-};
-
-export default function MyListPage({ films }: MyListPageProps): JSX.Element {
+export default function MyListPage(): JSX.Element {
+  const films = useAppSelector((state) => state.films);
   return (
     <div className='user-page'>
       <Helmet>

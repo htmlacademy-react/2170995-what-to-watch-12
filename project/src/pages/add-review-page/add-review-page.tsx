@@ -1,21 +1,15 @@
 import { Helmet } from 'react-helmet-async';
 import { Link, useParams } from 'react-router-dom';
 
+import { useAppSelector } from '../../hooks';
+
 // components
 import UserBlock from '../../components/user-block/user-block';
 import MainLogo from '../../components/logo/logo-main';
 import CommentForm from '../../components/comment-form/comment-form';
 
-// types
-import { FilmMockTypes } from '../../types/films-mock-type';
-
-type AddReviewPageProps = {
-  films: FilmMockTypes;
-};
-
-export default function AddReviewPage({
-  films,
-}: AddReviewPageProps): JSX.Element {
+export default function AddReviewPage(): JSX.Element {
+  const films = useAppSelector((state) => state.films);
   const params = useParams();
   const filmCard = films.find((film) => film.id === Number(params.id));
   return (

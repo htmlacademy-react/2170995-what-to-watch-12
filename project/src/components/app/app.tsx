@@ -13,7 +13,6 @@ import PrivateRoute from '../private-route/private-route';
 
 // types
 import { FilmCardDescription } from '../../types/film-card-description';
-import { FilmMockTypes } from '../../types/films-mock-type';
 import { ReviewMockTypes } from '../../types/review-mock-type';
 
 // const
@@ -21,48 +20,36 @@ import { AppRoute, AuthorizationStatus } from '../../const';
 
 type AppProps = {
   filmCardDescription: FilmCardDescription;
-  films: FilmMockTypes;
   reviews: ReviewMockTypes;
 };
 
-function App({ filmCardDescription, films, reviews }: AppProps): JSX.Element {
+function App({ filmCardDescription, reviews }: AppProps): JSX.Element {
   return (
     <HelmetProvider>
       <BrowserRouter>
         <Routes>
           <Route
             path={AppRoute.Main}
-            element={
-              <MainPage
-                filmCardDescription={filmCardDescription}
-                films={films}
-              />
-            }
+            element={<MainPage filmCardDescription={filmCardDescription} />}
           />
 
-          <Route
-            path={AppRoute.AddReview}
-            element={<AddReviewPage films={films} />}
-          />
+          <Route path={AppRoute.AddReview} element={<AddReviewPage />} />
 
           <Route
             path={AppRoute.Film}
-            element={<FilmPage films={films} reviews={reviews} />}
+            element={<FilmPage reviews={reviews} />}
           />
 
           <Route
             path={AppRoute.MyList}
             element={
               <PrivateRoute authorizationStatus={AuthorizationStatus.Auth}>
-                <MyListPage films={films} />
+                <MyListPage />
               </PrivateRoute>
             }
           />
 
-          <Route
-            path={AppRoute.Player}
-            element={<PlayerPage films={films} />}
-          />
+          <Route path={AppRoute.Player} element={<PlayerPage />} />
 
           <Route path={AppRoute.SignIn} element={<SignInPage />} />
 

@@ -187,5 +187,53 @@ export const mockFilms: FilmMockTypes = [
     isFavorite: false,
     videoLink: 'https://12.react.pages.academy/static/film/video/matrix.mp4',
     previewVideoLink: 'https://12.react.pages.academy/static/film/video/dog.mp4'
+  },
+
+  {
+    name: 'Macbeth',
+    posterImage: 'https://12.react.pages.academy/static/film/poster/Macbeth.jpg',
+    previewImage: 'https://12.react.pages.academy/static/film/preview/macbeth.jpg',
+    backgroundImage: 'https://12.react.pages.academy/static/film/background/Macbeth.jpg',
+    backgroundColor: '#F1E9CE',
+    description: 'Macbeth, the Thane of Glamis, receives a prophecy from a trio of witches that one day he will become King of Scotland. Consumed by ambition and spurred to action by his wife, Macbeth murders his king and takes the throne for himself.',
+    rating: 3.3,
+    scoresCount: 48798,
+    director: 'Justin Kurzel',
+    starring: [
+      'Michael Fassbender',
+      'Marion Cotillard',
+      'Jack Madigan'
+    ],
+    runTime: 113,
+    genre: 'Drama',
+    released: 2015,
+    id: 21,
+    isFavorite: false,
+    videoLink: 'https://12.react.pages.academy/static/film/video/bubbles.mp4',
+    previewVideoLink: 'https://12.react.pages.academy/static/film/video/dog.mp4'
+  },
+
+  {
+    name: 'Aviator',
+    posterImage: 'https://12.react.pages.academy/static/film/poster/Aviator.jpg',
+    previewImage: 'https://12.react.pages.academy/static/film/preview/aviator.jpg',
+    backgroundImage: 'https://12.react.pages.academy/static/film/background/Aviator.jpg',
+    backgroundColor: '#D6CDAF',
+    description: 'A biopic depicting the early years of legendary Director and aviator Howard Hughes career from the late 1920s to the mid 1940s.',
+    rating: 9.8,
+    scoresCount: 307174,
+    director: 'Martin Scorsese',
+    starring: [
+      'Leonardo DiCaprio',
+      'Cate Blanchett',
+      'Kate Beckinsale'
+    ],
+    runTime: 170,
+    genre: 'Drama',
+    released: 2014,
+    id: 25,
+    isFavorite: false,
+    videoLink: 'https://12.react.pages.academy/static/film/video/bubbles.mp4',
+    previewVideoLink: 'https://12.react.pages.academy/static/film/video/dog.mp4'
   }
 ];
