@@ -2,7 +2,7 @@ import { useState } from 'react';
 
 // components
 import FilmCard from '../film-card/film-card';
-import ShowMore from '../catalog/show-more';
+import ShowMoreButton from '../show-more-button/show-more-button';
 
 // types
 import { FilmMockTypes } from '../../types/films-mock-type';
@@ -25,7 +25,7 @@ export default function FilmList({ films }: FilmListProps): JSX.Element {
           .slice(0, filmsCount)}
       </div>
       {filmsCount < films.length && (
-        <ShowMore
+        <ShowMoreButton
           onClick={() => {
             setFilmsCount((count) => count + FILMS_COUNT_STEP);
           }}
