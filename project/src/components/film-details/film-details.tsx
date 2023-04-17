@@ -1,8 +1,8 @@
 // types
-import { FilmMockType } from '../../types/films-mock-type';
+import { Film } from '../../types/film';
 
 type FilmDetailsProps = {
-  film: FilmMockType | undefined;
+  film: Film | undefined;
 };
 
 const getTimeFromMins = (mins: number) => {

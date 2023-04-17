@@ -5,13 +5,13 @@ import FilmCard from '../film-card/film-card';
 import ShowMoreButton from '../show-more-button/show-more-button';
 
 // types
-import { FilmMockTypes } from '../../types/films-mock-type';
+import { Films } from '../../types/film';
 
 // const
 import { FILMS_COUNT_STEP } from '../../const';
 
 type FilmListProps = {
-  films: FilmMockTypes;
+  films: Films;
 };
 
 export default function FilmList({ films }: FilmListProps): JSX.Element {

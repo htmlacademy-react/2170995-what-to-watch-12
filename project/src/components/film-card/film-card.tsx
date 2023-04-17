@@ -5,10 +5,10 @@ import VideoPlayer from '../video-player/video-player';
 
 // types
 import { Link } from 'react-router-dom';
-import { FilmMockType } from '../../types/films-mock-type';
+import { Film } from '../../types/film';
 
 type FilmCardProps = {
-  film: FilmMockType;
+  film: Film;
 };
 
 export default function FilmCard({ film }: FilmCardProps): JSX.Element {

@@ -1,10 +1,10 @@
 import dayjs from 'dayjs';
 
 // types
-import { ReviewMockType } from '../../types/review-mock-type';
+import { Review } from '../../types/review';
 
 type FilmReviewProps = {
-  review: ReviewMockType;
+  review: Review;
 };
 
 export default function FilmReview({ review }: FilmReviewProps): JSX.Element {

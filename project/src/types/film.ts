@@ -1,4 +1,4 @@
-export type FilmMockType = {
+export type Film = {
   id: number;
   name: string;
   posterImage: string;
@@ -18,4 +18,4 @@ export type FilmMockType = {
   isFavorite: boolean;
 }
 
-export type FilmMockTypes = FilmMockType[];
+export type Films = Film[];
