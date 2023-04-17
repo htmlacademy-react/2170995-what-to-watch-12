@@ -4,9 +4,9 @@ import { getToken } from './token';
 import { processErrorHandle } from './process-error-handle';
 
 const StatusCodeMapping: Record<number, boolean> = {
-//   [StatusCodes.BAD_REQUEST]: true,
-//   [StatusCodes.UNAUTHORIZED]: true,
-//   [StatusCodes.NOT_FOUND]: true,
+  [StatusCodes.BAD_REQUEST]: true,
+  [StatusCodes.UNAUTHORIZED]: true,
+  [StatusCodes.NOT_FOUND]: true,
 };
 const BACKEND_URL = 'https://12.react.pages.academy/wtw';
 const REQUEST_TIMEOUT = 5000;
