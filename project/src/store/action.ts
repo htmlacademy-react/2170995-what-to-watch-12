@@ -5,8 +5,8 @@ import { Reviews } from '../types/review';
 
 import { AuthorizationStatus, AppRoute } from './../const';
 
-export const changeGenre = createAction<{genre: string}>('changeGenre');
-export const setFilms = createAction<{films: Films}>('setFilms');
+export const changeGenre = createAction<string>('changeGenre');
+export const setFilms = createAction<Films>('setFilms');
 
 export const loadFilms = createAction<Films>('data/loadFilms');
 export const loadReviews = createAction<Reviews>('data/loadReviews');
