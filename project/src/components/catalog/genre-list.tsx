@@ -22,7 +22,7 @@ export default function GenreList(): JSX.Element {
       <Link
         to='#'
         className='catalog__genres-link'
-        onClick={() => dispatch(changeGenre({ genre }))}
+        onClick={() => dispatch(changeGenre(genre))}
       >
         {genre}
       </Link>

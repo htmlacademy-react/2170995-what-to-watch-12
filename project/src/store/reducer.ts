@@ -26,12 +26,10 @@ const initialState: InitialState = {
 
 export const reducer = createReducer(initialState, (builder) => {
   builder.addCase(changeGenre, (state, action) => {
-    const {genre} = action.payload;
-    state.genre = genre;
+    state.genre = action.payload;
   })
     .addCase(setFilms, (state, action) => {
-      const {films} = action.payload;
-      state.films = films;
+      state.films = action.payload;
     })
     .addCase(loadFilms, (state, action) => {
       state.films = action.payload;
