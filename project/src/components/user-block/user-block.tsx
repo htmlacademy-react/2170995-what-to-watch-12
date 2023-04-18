@@ -1,5 +1,19 @@
+import { Link } from 'react-router-dom';
+import { useAppDispatch, useAppSelector } from '../../hooks';
+import { logoutAction } from '../../store/api-actions';
+import { AuthorizationStatus, AppRoute } from '../../const';
+
 export default function UserBlock(): JSX.Element {
-  return (
+  const dispatch = useAppDispatch();
+  const authorizationStatus = useAppSelector(
+    (state) => state.authorizationStatus
+  );
+
+  const onClick = () => {
+    dispatch(logoutAction());
+  };
+
+  return authorizationStatus === AuthorizationStatus.Auth ? (
     <ul className='user-block'>
       <li className='user-block__item'>
         <div className='user-block__avatar'>
@@ -7,10 +21,16 @@ export default function UserBlock(): JSX.Element {
         </div>
       </li>
       <li className='user-block__item'>
-        <a href='/' className='user-block__link'>
+        <Link to={AppRoute.Main} onClick={onClick} className='user-block__link'>
           Sign out
-        </a>
+        </Link>
       </li>
     </ul>
+  ) : (
+    <div className='user-block'>
+      <Link to={AppRoute.SignIn} className='user-block__link'>
+        Sign in
+      </Link>
+    </div>
   );
 }
