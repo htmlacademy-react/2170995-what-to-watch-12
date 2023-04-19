@@ -5,10 +5,10 @@ import FilmList from '../film-list/film-list';
 import Footer from '../footer/footer';
 
 // types
-import { FilmMockType } from '../../types/films-mock-type';
+import { Film } from '../../types/film';
 
 type FilmPageContentProps = {
-  filmInfo: FilmMockType | undefined;
+  filmInfo: Film | undefined;
 };
 
 export default function FilmPageContent({

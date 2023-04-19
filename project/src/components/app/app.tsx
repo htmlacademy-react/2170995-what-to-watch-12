@@ -1,6 +1,8 @@
 import { Routes, Route, BrowserRouter } from 'react-router-dom';
 import { HelmetProvider } from 'react-helmet-async';
 
+import { useAppSelector } from '../../hooks';
+
 // pages
 import MainPage from '../../pages/main-page/main-page';
 import AddReviewPage from '../../pages/add-review-page/add-review-page';
@@ -10,20 +12,33 @@ import NotFoundPage from '../../pages/not-found-page/not-found-page';
 import PlayerPage from '../../pages/player-page/player-page';
 import SignInPage from '../../pages/sign-in-page/sign-in-page';
 import PrivateRoute from '../private-route/private-route';
+import Loading from '../../pages/loading-page/loading';
 
 // types
 import { FilmCardDescription } from '../../types/film-card-description';
-import { ReviewMockTypes } from '../../types/review-mock-type';
 
 // const
 import { AppRoute, AuthorizationStatus } from '../../const';
 
 type AppProps = {
   filmCardDescription: FilmCardDescription;
-  reviews: ReviewMockTypes;
 };
 
-function App({ filmCardDescription, reviews }: AppProps): JSX.Element {
+function App({ filmCardDescription }: AppProps): JSX.Element {
+  const authorizationStatus = useAppSelector(
+    (state) => state.authorizationStatus
+  );
+  const isFilmsDataLoading = useAppSelector(
+    (state) => state.isFilmsDataLoading
+  );
+
+  if (
+    authorizationStatus === AuthorizationStatus.Unknown ||
+    isFilmsDataLoading
+  ) {
+    return <Loading />;
+  }
+
   return (
     <HelmetProvider>
       <BrowserRouter>
@@ -35,15 +50,12 @@ function App({ filmCardDescription, reviews }: AppProps): JSX.Element {
 
           <Route path={AppRoute.AddReview} element={<AddReviewPage />} />
 
-          <Route
-            path={AppRoute.Film}
-            element={<FilmPage reviews={reviews} />}
-          />
+          <Route path={AppRoute.Film} element={<FilmPage />} />
 
           <Route
             path={AppRoute.MyList}
             element={
-              <PrivateRoute authorizationStatus={AuthorizationStatus.Auth}>
+              <PrivateRoute authorizationStatus={authorizationStatus}>
                 <MyListPage />
               </PrivateRoute>
             }

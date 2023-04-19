@@ -1,7 +1,10 @@
 import { Helmet } from 'react-helmet-async';
 import { Link, useParams } from 'react-router-dom';
+import { useEffect } from 'react';
 
 import { useAppSelector } from '../../hooks';
+import { store } from '../../store';
+import { fetchReviewAction } from '../../store/api-actions';
 
 // components
 import UserBlock from '../../components/user-block/user-block';
@@ -9,17 +12,16 @@ import MainLogo from '../../components/logo/logo-main';
 import FilmPageContent from '../../components/film-page-content/film-page-content';
 import FilmTabs from '../../components/film-tabs/film-tabs';
 
-// types
-import { ReviewMockTypes } from '../../types/review-mock-type';
-
-type FilmPageProps = {
-  reviews: ReviewMockTypes;
-};
-
-export default function FilmPage({ reviews }: FilmPageProps): JSX.Element {
+export default function FilmPage(): JSX.Element {
   const films = useAppSelector((state) => state.films);
   const params = useParams();
   const filmInfo = films.find((film) => film.id === Number(params.id));
+
+  useEffect(() => {
+    if (filmInfo) {
+      store.dispatch(fetchReviewAction(filmInfo.id));
+    }
+  }, [filmInfo]);
 
   return (
     <>
@@ -86,7 +88,7 @@ export default function FilmPage({ reviews }: FilmPageProps): JSX.Element {
                 height='327'
               />
             </div>
-            <FilmTabs film={filmInfo} reviews={reviews} />
+            <FilmTabs film={filmInfo} />
           </div>
         </div>
       </section>

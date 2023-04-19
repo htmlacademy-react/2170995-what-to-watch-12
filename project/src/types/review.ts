@@ -1,4 +1,4 @@
-export type ReviewMockType = {
+export type Review = {
   comment: string;
   date: string;
   id: number;
@@ -10,9 +10,9 @@ export type ReviewMockType = {
 }
 
 
-export type ReviewMockTypes = ReviewMockType[];
+export type Reviews = Review[];
 
 export type FilmReviewMockType = {
   id: number;
-  reviews: ReviewMockTypes;
+  reviews: Reviews;
 }

@@ -8,23 +8,18 @@ import FilmDetails from '../film-details/film-details';
 import FilmReviews from '../film-reviews/film-reviews';
 
 // types
-import { FilmMockType } from '../../types/films-mock-type';
-import { ReviewMockTypes } from '../../types/review-mock-type';
+import { Film } from '../../types/film';
 
 // const
 import { FilmTabsType } from '../../const';
 
 type FilmTabsProps = {
-  film: FilmMockType | undefined;
-  reviews: ReviewMockTypes;
+  film: Film | undefined;
 };
 
 const filmPageTabs = Object.values(FilmTabsType);
 
-export default function FilmTabs({
-  film,
-  reviews,
-}: FilmTabsProps): JSX.Element {
+export default function FilmTabs({ film }: FilmTabsProps): JSX.Element {
   const [activeTab, setActiveTab] = useState(FilmTabsType.Overview);
 
   const getTabByType = () => {
@@ -34,7 +29,7 @@ export default function FilmTabs({
       case FilmTabsType.Details:
         return <FilmDetails film={film} />;
       case FilmTabsType.Reviews:
-        return <FilmReviews reviews={reviews} />;
+        return <FilmReviews />;
     }
   };
 

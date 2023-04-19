@@ -2,29 +2,28 @@ import React from 'react';
 import ReactDOM from 'react-dom/client';
 import { Provider } from 'react-redux';
 import App from './components/app/app';
+import ErrorMessage from './components/error-message/error-message';
 import { store } from './store';
-import { setFilms } from './store/action';
 
-import { mockFilms } from './mocks/mock-films';
-import { mockReviews } from './mocks/mock-reviews';
+import { checkAuthAction, fetchFilmAction } from './store/api-actions';
+
+store.dispatch(checkAuthAction());
+store.dispatch(fetchFilmAction());
 
 const root = ReactDOM.createRoot(
   document.getElementById('root') as HTMLElement
 );
 
-const films = mockFilms;
-store.dispatch(setFilms({ films }));
-
 root.render(
   <React.StrictMode>
     <Provider store={store}>
+      <ErrorMessage />
       <App
         filmCardDescription={{
           title: 'The Grand Budapest Hotel',
           genre: 'Drama',
           year: 2014,
         }}
-        reviews={mockReviews}
       />
     </Provider>
   </React.StrictMode>

@@ -1,8 +1,8 @@
 // types
-import { FilmMockType } from '../../types/films-mock-type';
+import { Film } from '../../types/film';
 
 type FilmOverviewProps = {
-  film: FilmMockType | undefined;
+  film: Film | undefined;
 };
 
 export default function FilmOverview({ film }: FilmOverviewProps): JSX.Element {

@@ -1,16 +1,10 @@
+import { useAppSelector } from '../../hooks';
+
 // components
 import FilmReview from '../film-review/film-review';
 
-// types
-import { ReviewMockTypes } from '../../types/review-mock-type';
-
-type FilmReviewsProps = {
-  reviews: ReviewMockTypes;
-};
-
-export default function FilmReviews({
-  reviews,
-}: FilmReviewsProps): JSX.Element {
+export default function FilmReviews(): JSX.Element {
+  const reviews = useAppSelector((state) => state.reviews);
   const evenReviews = reviews.filter((_, index) => index % 2 === 0);
   const oddReviews = reviews.filter((_, index) => index % 2 !== 0);
 
