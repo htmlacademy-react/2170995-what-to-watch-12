@@ -1,5 +1,5 @@
 import { Helmet } from 'react-helmet-async';
-import { useRef, FormEvent } from 'react';
+import { useRef, FormEvent, useState } from 'react';
 import { useAppDispatch } from '../../hooks';
 import { loginAction } from '../../store/api-actions';
 import { AuthData } from '../../types/auth-data';
@@ -11,6 +11,8 @@ import Footer from '../../components/footer/footer';
 export default function SignInPage(): JSX.Element {
   const loginRef = useRef<HTMLInputElement | null>(null);
   const passwordRef = useRef<HTMLInputElement | null>(null);
+  const [error, setError] = useState('');
+  const isValid = /(?=.*[0-9])(?=.*[a-zA-Z])/g;
 
   const dispatch = useAppDispatch();
 
@@ -21,11 +23,19 @@ export default function SignInPage(): JSX.Element {
   const handleSubmit = (evt: FormEvent<HTMLFormElement>) => {
     evt.preventDefault();
 
-    if (loginRef.current !== null && passwordRef.current !== null) {
+    if (
+      loginRef.current !== null &&
+      passwordRef.current !== null &&
+      passwordRef.current.value.match(isValid)
+    ) {
       onSubmit({
         login: loginRef.current.value,
         password: passwordRef.current.value,
       });
+    } else {
+      setError(
+        'The field should not be empty and the password field must contain at least one digit and a letter'
+      );
     }
   };
 
@@ -81,6 +91,12 @@ export default function SignInPage(): JSX.Element {
               Sign in
             </button>
           </div>
+
+          {error && (
+            <div style={{ color: 'red' }} onClick={() => setError('')}>
+              {error}
+            </div>
+          )}
         </form>
       </div>
 
