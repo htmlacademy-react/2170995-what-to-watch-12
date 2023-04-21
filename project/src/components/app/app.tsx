@@ -1,7 +1,9 @@
-import { Routes, Route, BrowserRouter } from 'react-router-dom';
+import { Routes, Route } from 'react-router-dom';
 import { HelmetProvider } from 'react-helmet-async';
 
 import { useAppSelector } from '../../hooks';
+import HistoryRouter from '../history-route/history-route';
+import browserHistory from '../../browser-history';
 
 // pages
 import MainPage from '../../pages/main-page/main-page';
@@ -13,6 +15,8 @@ import PlayerPage from '../../pages/player-page/player-page';
 import SignInPage from '../../pages/sign-in-page/sign-in-page';
 import PrivateRoute from '../private-route/private-route';
 import Loading from '../../pages/loading-page/loading';
+
+import AuthRoute from '../auth-route/auth-route';
 
 // types
 import { FilmCardDescription } from '../../types/film-card-description';
@@ -41,17 +45,21 @@ function App({ filmCardDescription }: AppProps): JSX.Element {
 
   return (
     <HelmetProvider>
-      <BrowserRouter>
+      <HistoryRouter history={browserHistory}>
         <Routes>
           <Route
             path={AppRoute.Main}
             element={<MainPage filmCardDescription={filmCardDescription} />}
           />
-
-          <Route path={AppRoute.AddReview} element={<AddReviewPage />} />
-
+          <Route
+            path={AppRoute.AddReview}
+            element={
+              <PrivateRoute authorizationStatus={authorizationStatus}>
+                <AddReviewPage />
+              </PrivateRoute>
+            }
+          />
           <Route path={AppRoute.Film} element={<FilmPage />} />
-
           <Route
             path={AppRoute.MyList}
             element={
@@ -60,14 +68,20 @@ function App({ filmCardDescription }: AppProps): JSX.Element {
               </PrivateRoute>
             }
           />
-
           <Route path={AppRoute.Player} element={<PlayerPage />} />
 
-          <Route path={AppRoute.SignIn} element={<SignInPage />} />
+          <Route
+            path={AppRoute.SignIn}
+            element={
+              <AuthRoute authorizationStatus={authorizationStatus}>
+                <SignInPage />
+              </AuthRoute>
+            }
+          />
 
           <Route path='*' element={<NotFoundPage />} />
         </Routes>
-      </BrowserRouter>
+      </HistoryRouter>
     </HelmetProvider>
   );
 }

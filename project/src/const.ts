@@ -29,6 +29,5 @@ export enum FilmTabsType {
 }
 
 export const PLAYING_DELAY = 1000;
-export const TIMEOUT_SHOW_ERROR = 2000;
 export const DEFAULT_GENRE = 'All genre';
 export const FILMS_COUNT_STEP = 8;
