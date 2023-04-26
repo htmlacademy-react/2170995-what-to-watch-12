@@ -1,37 +1,69 @@
 import { Helmet } from 'react-helmet-async';
 import { Link, useParams } from 'react-router-dom';
 import { useEffect } from 'react';
+import cn from 'classnames';
 
-import { useAppSelector } from '../../hooks';
-import { store } from '../../store';
-import { fetchReviewAction } from '../../store/api-actions';
+import { useAppDispatch, useAppSelector } from '../../hooks';
+import { fetchFilmAction, fetchReviewsAction } from '../../store/api-actions';
+import {
+  getCurrentFilm,
+  getFilmsDataLoading,
+} from '../../store/film-data/film-data.selectors';
+import { getAuthorizationStatus } from '../../store/user-process/user-process.selectors';
+
+// pages
+import Loading from '../loading-page/loading';
+import NotFoundPage from '../not-found-page/not-found-page';
 
 // components
 import UserBlock from '../../components/user-block/user-block';
 import MainLogo from '../../components/logo/logo-main';
 import FilmPageContent from '../../components/film-page-content/film-page-content';
 import FilmTabs from '../../components/film-tabs/film-tabs';
+import MyListButton from '../../components/promo-film/my-list-button';
+
+// const
+import { AuthorizationStatus } from '../../const';
 
 export default function FilmPage(): JSX.Element {
-  const films = useAppSelector((state) => state.films);
-  const params = useParams();
-  const filmInfo = films.find((film) => film.id === Number(params.id));
+  const authorizationStatus = useAppSelector(getAuthorizationStatus);
+  const isAuth = authorizationStatus === AuthorizationStatus.Auth;
+
+  const isFilmsDataLoading = useAppSelector(getFilmsDataLoading);
+
+  const { id } = useParams();
+
+  const dispatch = useAppDispatch();
 
   useEffect(() => {
-    if (filmInfo) {
-      store.dispatch(fetchReviewAction(filmInfo.id));
+    if (id) {
+      dispatch(fetchFilmAction(id));
+      dispatch(fetchReviewsAction(id));
     }
-  }, [filmInfo]);
+  }, [id, dispatch]);
+
+  const film = useAppSelector(getCurrentFilm);
+
+  if (film === undefined || isFilmsDataLoading) {
+    return <Loading />;
+  }
+
+  if (film === null || !id) {
+    return <NotFoundPage />;
+  }
 
   return (
     <>
-      <section className='film-card film-card--full'>
+      <section
+        className='film-card film-card--full'
+        style={{ backgroundColor: `${film.backgroundColor}` }}
+      >
         <Helmet>
           <title>WTW Film info</title>
         </Helmet>
         <div className='film-card__hero'>
           <div className='film-card__bg'>
-            <img src={filmInfo?.backgroundImage} alt={filmInfo?.name} />
+            <img src={film.backgroundImage} alt={film.name} />
           </div>
 
           <h1 className='visually-hidden'>WTW</h1>
@@ -44,10 +76,10 @@ export default function FilmPage(): JSX.Element {
 
           <div className='film-card__wrap'>
             <div className='film-card__desc'>
-              <h2 className='film-card__title'>{filmInfo?.name}</h2>
+              <h2 className='film-card__title'>{film.name}</h2>
               <p className='film-card__meta'>
-                <span className='film-card__genre'>{filmInfo?.genre}</span>
-                <span className='film-card__year'>{filmInfo?.released}</span>
+                <span className='film-card__genre'>{film.genre}</span>
+                <span className='film-card__year'>{film.released}</span>
               </p>
 
               <div className='film-card__buttons'>
@@ -60,17 +92,17 @@ export default function FilmPage(): JSX.Element {
                   </svg>
                   <span>Play</span>
                 </button>
-                <button
-                  className='btn btn--list film-card__button'
-                  type='button'
+                <MyListButton
+                  isAuth={isAuth}
+                  isFavorite={film.isFavorite}
+                  filmId={id}
+                />
+                <Link
+                  to='review'
+                  className={cn('btn film-card__button', {
+                    'visually-hidden': !isAuth,
+                  })}
                 >
-                  <svg viewBox='0 0 19 20' width='19' height='20'>
-                    <use xlinkHref='#add'></use>
-                  </svg>
-                  <span>My list</span>
-                  <span className='film-card__count'>{films.length}</span>
-                </button>
-                <Link to='review' className='btn film-card__button'>
                   Add review
                 </Link>
               </div>
@@ -82,18 +114,18 @@ export default function FilmPage(): JSX.Element {
           <div className='film-card__info'>
             <div className='film-card__poster film-card__poster--big'>
               <img
-                src={filmInfo?.posterImage}
-                alt={filmInfo?.name}
+                src={film.posterImage}
+                alt={film.name}
                 width='218'
                 height='327'
               />
             </div>
-            <FilmTabs film={filmInfo} />
+            <FilmTabs film={film} />
           </div>
         </div>
       </section>
 
-      <FilmPageContent filmInfo={filmInfo} />
+      <FilmPageContent filmInfo={film} />
     </>
   );
 }

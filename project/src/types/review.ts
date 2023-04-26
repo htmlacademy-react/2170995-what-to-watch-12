@@ -9,10 +9,4 @@ export type Review = {
 };
 }
 
-
 export type Reviews = Review[];
-
-export type FilmReviewMockType = {
-  id: number;
-  reviews: Reviews;
-}

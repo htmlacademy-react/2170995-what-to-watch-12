@@ -1,4 +1,6 @@
 import { Navigate } from 'react-router-dom';
+
+// const
 import { AppRoute, AuthorizationStatus } from '../../const';
 
 type AuthRouteProps = {
