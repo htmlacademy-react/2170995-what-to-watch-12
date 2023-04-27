@@ -1,3 +1,5 @@
+import { getFilmRating } from '../../utils';
+
 // types
 import { Film } from '../../types/film';
 
@@ -6,24 +8,6 @@ type FilmOverviewProps = {
 };
 
 export default function FilmOverview({ film }: FilmOverviewProps): JSX.Element {
-  const getFilmRating = (rating: number) => {
-    if (rating > 0 && rating < 3) {
-      return 'Bad';
-    }
-    if (rating >= 3 && rating < 5) {
-      return 'Normal';
-    }
-    if (rating >= 5 && rating < 8) {
-      return 'Good';
-    }
-    if (rating >= 8 && rating < 10) {
-      return 'Very good';
-    }
-    if (rating === 10) {
-      return 'Awesom';
-    }
-  };
-
   return (
     <>
       <div className='film-rating'>

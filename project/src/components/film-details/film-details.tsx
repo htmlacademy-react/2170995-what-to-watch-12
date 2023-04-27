@@ -1,14 +1,10 @@
+import { getTimeFromMins } from '../../utils';
+
 // types
 import { Film } from '../../types/film';
 
 type FilmDetailsProps = {
   film: Film | undefined;
-};
-
-const getTimeFromMins = (mins: number) => {
-  const hours = Math.trunc(mins / 60);
-  const minutes = mins % 60;
-  return `${hours}h ${minutes}m`;
 };
 
 export default function FilmDetails({ film }: FilmDetailsProps): JSX.Element {
