@@ -3,13 +3,14 @@ import { StatusCodes } from 'http-status-codes';
 import { getToken } from './token';
 import {toast} from 'react-toastify';
 
+import { BACKEND_URL, REQUEST_TIMEOUT, APIRoute } from './../const';
+
 const StatusCodeMapping: Record<number, boolean> = {
   [StatusCodes.BAD_REQUEST]: true,
   [StatusCodes.UNAUTHORIZED]: true,
   [StatusCodes.NOT_FOUND]: true,
 };
-const BACKEND_URL = 'https://12.react.pages.academy/wtw';
-const REQUEST_TIMEOUT = 5000;
+
 
 const shouldDisplayError = (response: AxiosResponse) => !!StatusCodeMapping[response.status];
 
@@ -33,8 +34,11 @@ export const createAPI = (): AxiosInstance => {
 
   api.interceptors.response.use(
     (response) => response,
-    (error: AxiosError<{error: string}>) => {
+    (error: AxiosError<{error: string; config: AxiosRequestConfig}>) => {
       if(error.response && shouldDisplayError(error.response)) {
+        if (error.config.url === APIRoute.Login && error.config.method === 'get') {
+          throw error;
+        }
         toast.warn(error.response.data.error);
       }
 

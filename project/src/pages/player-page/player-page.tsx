@@ -1,9 +1,6 @@
 import { Helmet } from 'react-helmet-async';
 
-// import { useAppSelector } from '../../hooks';
-
 export default function PlayerPage(): JSX.Element {
-  // const films = useAppSelector((state) => state.films);
   return (
     <div className='player'>
       <Helmet>

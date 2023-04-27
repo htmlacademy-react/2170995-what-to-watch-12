@@ -1,12 +1,15 @@
 import { Helmet } from 'react-helmet-async';
 import { useRef, FormEvent, useState } from 'react';
+
 import { useAppDispatch } from '../../hooks';
 import { loginAction } from '../../store/api-actions';
-import { AuthData } from '../../types/auth-data';
 
 // components
 import MainLogo from '../../components/logo/logo-main';
 import Footer from '../../components/footer/footer';
+
+// types
+import { AuthData } from '../../types/auth-data';
 
 export default function SignInPage(): JSX.Element {
   const loginRef = useRef<HTMLInputElement | null>(null);

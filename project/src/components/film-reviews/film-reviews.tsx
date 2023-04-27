@@ -1,10 +1,11 @@
 import { useAppSelector } from '../../hooks';
+import { getReviews } from '../../store/film-data/film-data.selectors';
 
 // components
 import FilmReview from '../film-review/film-review';
 
 export default function FilmReviews(): JSX.Element {
-  const reviews = useAppSelector((state) => state.reviews);
+  const reviews = useAppSelector(getReviews);
   const evenReviews = reviews.filter((_, index) => index % 2 === 0);
   const oddReviews = reviews.filter((_, index) => index % 2 !== 0);
 

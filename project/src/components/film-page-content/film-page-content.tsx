@@ -6,6 +6,7 @@ import Footer from '../footer/footer';
 
 // types
 import { Film } from '../../types/film';
+import { getFilms } from '../../store/film-data/film-data.selectors';
 
 type FilmPageContentProps = {
   filmInfo: Film | undefined;
@@ -14,7 +15,7 @@ type FilmPageContentProps = {
 export default function FilmPageContent({
   filmInfo,
 }: FilmPageContentProps): JSX.Element {
-  const films = useAppSelector((state) => state.films);
+  const films = useAppSelector(getFilms);
   const SIMILAR_LIST_COUNT = 4;
   const similarList = films
     .filter(
