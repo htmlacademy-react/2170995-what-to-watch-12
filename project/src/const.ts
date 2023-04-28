@@ -44,6 +44,12 @@ export const PLAYING_DELAY = 1000;
 export const DEFAULT_GENRE = 'All genre';
 export const FILMS_COUNT_STEP = 8;
 export const MAX_COUNT_OF_GENRE = 9;
+export const SIMILAR_LIST_COUNT = 4;
+
+
+export const MIN_SYMBOLS_QUANTITY = 50;
+export const MAX_SYMBOLS_QUANTITY = 400;
+export const STAR_COUNT = 10;
 
 export const BACKEND_URL = 'https://12.react.pages.academy/wtw';
 export const REQUEST_TIMEOUT = 5000;

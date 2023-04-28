@@ -18,6 +18,7 @@ import MyListButton from './my-list-button';
 
 // const
 import { AuthorizationStatus } from '../../const';
+import VideoPlayerButton from '../video-player-button/video-player-button';
 
 export default function PromoFilm(): JSX.Element {
   const dispatch = useAppDispatch();
@@ -82,12 +83,7 @@ export default function PromoFilm(): JSX.Element {
             </p>
 
             <div className='film-card__buttons'>
-              <button className='btn btn--play film-card__button' type='button'>
-                <svg viewBox='0 0 19 19' width='19' height='19'>
-                  <use xlinkHref='#play-s'></use>
-                </svg>
-                <span>Play</span>
-              </button>
+              <VideoPlayerButton filmId={`${promoFilm.id}`} />
               <MyListButton
                 isAuth={isAuth}
                 isFavorite={promoFilm.isFavorite}

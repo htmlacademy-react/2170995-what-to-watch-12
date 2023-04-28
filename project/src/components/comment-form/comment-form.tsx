@@ -7,13 +7,17 @@ import { addReviewAction } from '../../store/api-actions';
 // pages
 import NotFoundPage from '../../pages/not-found-page/not-found-page';
 
-const MIN_SYMBOLS_QUANTITY = 50;
-const MAX_SYMBOLS_QUANTITY = 400;
+// const
+import {
+  MIN_SYMBOLS_QUANTITY,
+  MAX_SYMBOLS_QUANTITY,
+  STAR_COUNT,
+} from '../../const';
 
 export default function CommentForm(): JSX.Element {
   const dispatch = useAppDispatch();
-  const starCount = 10;
-  const ratingStars = [...Array(starCount).keys()];
+
+  const ratingStars = [...Array(STAR_COUNT).keys()];
   const [formData, setFormData] = useState({
     starId: 0,
     text: '',
@@ -88,16 +92,16 @@ export default function CommentForm(): JSX.Element {
                   onBlur={blurHandler}
                   onChange={onChange}
                   className='rating__input'
-                  id={`star-${starCount - ratingStar}`}
+                  id={`star-${STAR_COUNT - ratingStar}`}
                   type='radio'
                   name='starId'
-                  value={starCount - ratingStar}
+                  value={STAR_COUNT - ratingStar}
                 />
                 <label
                   className='rating__label'
-                  htmlFor={`star-${starCount - ratingStar}`}
+                  htmlFor={`star-${STAR_COUNT - ratingStar}`}
                 >
-                  Rating {starCount - ratingStar}
+                  Rating {STAR_COUNT - ratingStar}
                 </label>
               </Fragment>
             ))}
