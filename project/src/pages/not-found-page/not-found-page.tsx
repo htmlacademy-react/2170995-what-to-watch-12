@@ -2,7 +2,6 @@ import { Link } from 'react-router-dom';
 import { Helmet } from 'react-helmet-async';
 
 // components
-import UserBlock from '../../components/user-block/user-block';
 import MainLogo from '../../components/logo/logo-main';
 import Footer from '../../components/footer/footer';
 
@@ -20,7 +19,6 @@ export default function NotFoundPage(): JSX.Element {
 
         <header className='page-header film-card__head'>
           <MainLogo />
-          <UserBlock />
         </header>
         <div className={styles.notFoundTitleWrapper}>
           <h1>Page not found</h1>

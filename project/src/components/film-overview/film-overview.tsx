@@ -1,4 +1,4 @@
-import { getFilmRating } from '../../utils';
+import { getFilmRating } from '../../utils/utils';
 
 // types
 import { Film } from '../../types/film';
