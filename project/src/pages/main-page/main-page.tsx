@@ -4,13 +4,13 @@ import {
   fetchFilmsAction,
   promoFilmAction,
 } from '../../store/api-actions';
+import { useAppDispatch } from '../../hooks';
+import { useEffect } from 'react';
 
 // components
 import PromoFilm from '../../components/promo-film/promo-film';
 import Catalog from '../../components/catalog/catalog';
 import Footer from '../../components/footer/footer';
-import { useAppDispatch } from '../../hooks';
-import { useEffect } from 'react';
 
 store.dispatch(checkAuthAction());
 

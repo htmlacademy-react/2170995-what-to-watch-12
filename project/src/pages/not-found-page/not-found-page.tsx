@@ -2,7 +2,7 @@ import { Link } from 'react-router-dom';
 import { Helmet } from 'react-helmet-async';
 
 // components
-import MainLogo from '../../components/logo/logo-main';
+import MainLogo from '../../components/logo/main-logo';
 import Footer from '../../components/footer/footer';
 
 // styles

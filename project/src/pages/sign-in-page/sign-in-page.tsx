@@ -5,7 +5,7 @@ import { useAppDispatch } from '../../hooks';
 import { loginAction } from '../../store/api-actions';
 
 // components
-import MainLogo from '../../components/logo/logo-main';
+import MainLogo from '../../components/logo/main-logo';
 import Footer from '../../components/footer/footer';
 
 // types

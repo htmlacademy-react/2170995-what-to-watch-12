@@ -12,7 +12,7 @@ import { getAuthorizationStatus } from '../../store/user-process/user-process.se
 import Loading from '../../pages/loading-page/loading';
 
 // components
-import MainLogo from '../logo/logo-main';
+import MainLogo from '../logo/main-logo';
 import UserBlock from '../user-block/user-block';
 import MyListButton from './my-list-button';
 
