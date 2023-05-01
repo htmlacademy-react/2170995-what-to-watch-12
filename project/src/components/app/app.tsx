@@ -2,7 +2,6 @@ import { Routes, Route } from 'react-router-dom';
 import { HelmetProvider } from 'react-helmet-async';
 
 import { useAppSelector } from '../../hooks';
-import browserHistory from '../../browser-history';
 
 // pages
 import MainPage from '../../pages/main-page/main-page';
@@ -16,7 +15,6 @@ import SignInPage from '../../pages/sign-in-page/sign-in-page';
 // components
 import AuthRoute from '../auth-route/auth-route';
 import PrivateRoute from '../private-route/private-route';
-import HistoryRouter from '../history-route/history-route';
 
 // const
 import { AppRoute } from '../../const';
@@ -27,40 +25,38 @@ function App(): JSX.Element {
 
   return (
     <HelmetProvider>
-      <HistoryRouter history={browserHistory}>
-        <Routes>
-          <Route path={AppRoute.Main} element={<MainPage />} />
-          <Route
-            path={AppRoute.AddReview}
-            element={
-              <PrivateRoute authorizationStatus={authorizationStatus}>
-                <AddReviewPage />
-              </PrivateRoute>
-            }
-          />
-          <Route path={AppRoute.Film} element={<FilmPage />} />
-          <Route
-            path={AppRoute.MyList}
-            element={
-              <PrivateRoute authorizationStatus={authorizationStatus}>
-                <MyListPage />
-              </PrivateRoute>
-            }
-          />
-          <Route path={AppRoute.Player} element={<PlayerPage />} />
+      <Routes>
+        <Route path={AppRoute.Main} element={<MainPage />} />
+        <Route
+          path={AppRoute.AddReview}
+          element={
+            <PrivateRoute authorizationStatus={authorizationStatus}>
+              <AddReviewPage />
+            </PrivateRoute>
+          }
+        />
+        <Route path={AppRoute.Film} element={<FilmPage />} />
+        <Route
+          path={AppRoute.MyList}
+          element={
+            <PrivateRoute authorizationStatus={authorizationStatus}>
+              <MyListPage />
+            </PrivateRoute>
+          }
+        />
+        <Route path={AppRoute.Player} element={<PlayerPage />} />
 
-          <Route
-            path={AppRoute.SignIn}
-            element={
-              <AuthRoute authorizationStatus={authorizationStatus}>
-                <SignInPage />
-              </AuthRoute>
-            }
-          />
+        <Route
+          path={AppRoute.SignIn}
+          element={
+            <AuthRoute authorizationStatus={authorizationStatus}>
+              <SignInPage />
+            </AuthRoute>
+          }
+        />
 
-          <Route path='*' element={<NotFoundPage />} />
-        </Routes>
-      </HistoryRouter>
+        <Route path='*' element={<NotFoundPage />} />
+      </Routes>
     </HelmetProvider>
   );
 }

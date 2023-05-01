@@ -10,7 +10,7 @@ import NotFoundPage from '../not-found-page/not-found-page';
 
 // components
 import UserBlock from '../../components/user-block/user-block';
-import MainLogo from '../../components/logo/logo-main';
+import MainLogo from '../../components/logo/main-logo';
 import CommentForm from '../../components/comment-form/comment-form';
 import { fetchFilmAction } from '../../store/api-actions';
 

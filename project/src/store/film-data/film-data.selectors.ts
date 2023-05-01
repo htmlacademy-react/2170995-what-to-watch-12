@@ -19,4 +19,4 @@ export const getReviewsDataLoading = (state: State): boolean => state[NameSpace.
 
 export const setGenre = (state: State): string => state[NameSpace.Data].genre;
 
-export const getLoadError = (state: State): string => state[NameSpace.Data].dataLoadingError;
+export const getLoadError = (state: State): boolean => state[NameSpace.Data].hasError;

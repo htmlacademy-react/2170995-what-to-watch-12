@@ -18,7 +18,7 @@ export type FilmData = {
   genre: string;
   promoFilm: Film | undefined | null;
   currentFilm: Film | null | undefined;
-  dataLoadingError: string;
+  hasError: boolean;
 }
 
 export type State = ReturnType<typeof store.getState>;

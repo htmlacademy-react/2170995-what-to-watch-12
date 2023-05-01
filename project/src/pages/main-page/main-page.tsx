@@ -1,5 +1,11 @@
 import { store } from '../../store';
-import { checkAuthAction, fetchFilmsAction } from '../../store/api-actions';
+import {
+  checkAuthAction,
+  fetchFilmsAction,
+  promoFilmAction,
+} from '../../store/api-actions';
+import { useAppDispatch } from '../../hooks';
+import { useEffect } from 'react';
 
 // components
 import PromoFilm from '../../components/promo-film/promo-film';
@@ -9,7 +15,11 @@ import Footer from '../../components/footer/footer';
 store.dispatch(checkAuthAction());
 
 export default function MainPage(): JSX.Element {
-  store.dispatch(fetchFilmsAction());
+  const dispatch = useAppDispatch();
+  useEffect(() => {
+    dispatch(fetchFilmsAction());
+    dispatch(promoFilmAction());
+  }, [dispatch]);
 
   return (
     <>

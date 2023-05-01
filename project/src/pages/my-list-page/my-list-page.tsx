@@ -8,7 +8,7 @@ import { getFavoriteFilms } from '../../store/user-process/user-process.selector
 
 // components
 import UserBlock from '../../components/user-block/user-block';
-import MainLogo from '../../components/logo/logo-main';
+import MainLogo from '../../components/logo/main-logo';
 import FilmList from '../../components/film-list/film-list';
 import Footer from '../../components/footer/footer';
 

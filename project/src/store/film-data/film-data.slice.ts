@@ -11,7 +11,7 @@ const initialState: FilmData = {
   genre: DEFAULT_GENRE,
   promoFilm: undefined,
   currentFilm: undefined,
-  dataLoadingError: '',
+  hasError: false,
 };
 
 export const filmData = createSlice({
@@ -40,10 +40,12 @@ export const filmData = createSlice({
       .addCase(fetchFilmsAction.fulfilled, (state, action) => {
         state.isFilmsDataLoading = false;
         state.films = action.payload;
+        state.hasError = false;
       })
       .addCase(fetchFilmsAction.rejected, (state) => {
         state.isFilmsDataLoading = false;
         state.films = [];
+        state.hasError = true;
       })
 
       // filmAction
@@ -53,10 +55,12 @@ export const filmData = createSlice({
       .addCase(fetchFilmAction.fulfilled, (state, action) => {
         state.isFilmsDataLoading = false;
         state.currentFilm = action.payload;
+        state.hasError = false;
       })
       .addCase(fetchFilmAction.rejected, (state) => {
         state.isFilmsDataLoading = false;
         state.currentFilm = null;
+        state.hasError = true;
       })
 
       // promoAction
@@ -77,22 +81,22 @@ export const filmData = createSlice({
         state.isReviewsDataLoading = true;
       })
       .addCase(fetchReviewsAction.fulfilled, (state, action) => {
-        state.isFilmsDataLoading = false;
+        state.isReviewsDataLoading = false;
         state.reviews = action.payload;
       })
       .addCase(fetchReviewsAction.rejected, (state) => {
-        state.isFilmsDataLoading = false;
+        state.isReviewsDataLoading = false;
         state.reviews = [];
       })
 
-      // reviewAction
+      // addReviewAction
       .addCase(addReviewAction.pending, (state) => {
         state.isReviewsDataLoading = true;
       })
       .addCase(addReviewAction.fulfilled, (state, action) => {
         state.isReviewsDataLoading = false;
-        state.dataLoadingError = '';
         state.reviews = action.payload;
+        state.hasError = false;
       })
       .addCase(addReviewAction.rejected, (state) => {
         state.isReviewsDataLoading = false;

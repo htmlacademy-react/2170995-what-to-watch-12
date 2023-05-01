@@ -17,7 +17,7 @@ import NotFoundPage from '../not-found-page/not-found-page';
 
 // components
 import UserBlock from '../../components/user-block/user-block';
-import MainLogo from '../../components/logo/logo-main';
+import MainLogo from '../../components/logo/main-logo';
 import FilmPageContent from '../../components/film-page-content/film-page-content';
 import FilmTabs from '../../components/film-tabs/film-tabs';
 import MyListButton from '../../components/promo-film/my-list-button';

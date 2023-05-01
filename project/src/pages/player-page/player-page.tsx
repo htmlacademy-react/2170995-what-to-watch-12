@@ -7,7 +7,7 @@ import {
   getCurrentFilm,
   getFilmsDataLoading,
 } from '../../store/film-data/film-data.selectors';
-import { formatTime } from '../../utils';
+import { formatTime } from '../../utils/utils';
 import Loading from '../loading-page/loading';
 import NotFoundPage from '../not-found-page/not-found-page';
 

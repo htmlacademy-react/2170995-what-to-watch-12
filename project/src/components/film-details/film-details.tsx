@@ -1,4 +1,4 @@
-import { getTimeFromMins } from '../../utils';
+import { getTimeFromMins } from '../../utils/utils';
 
 // types
 import { Film } from '../../types/film';
